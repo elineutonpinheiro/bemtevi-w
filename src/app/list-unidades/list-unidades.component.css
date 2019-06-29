@@ -1,13 +1,10 @@
 table {
   width: 100%;
-  box-shadow: none;
   font-family: Arial, Helvetica, sans-serif;
 }
 
-
 .mat-elevation-z8 {
   box-shadow: none;
-
 }
 
 .data-table {

@@ -14,7 +14,7 @@ export interface UnidadeData {
 /** Constants used to fill up our data base. */
 
 /*------------------------------------------------------------------------------*/
-/* É mais correto por uma tabela só, ou cria um elemento para cada propriedade? */
+/* É mais correto por uma tabela só ou criar um elemento para cada propriedade? */
 /*------------------------------------------------------------------------------*/
 
 const CONTATOS: string[] = [

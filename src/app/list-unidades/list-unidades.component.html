@@ -13,7 +13,7 @@
       <mat-grid-tile></mat-grid-tile>
       <mat-grid-tile>
         <div style="margin-left: 33%;">
-            <button mat-flat-button style="width: 200px; height: 52px; padding:0px;
+          <button mat-flat-button style="width: 200px; height: 52px; padding:0px;
             margin-bottom: 17px; background-color: blueviolet; color: white; font-weight: bold">NOVA
             UNIDADE
           </button>
@@ -25,49 +25,51 @@
 
   <div class="mat-elevation-z8">
     <table mat-table [dataSource]="dataSource" matSort>
-      <!-- Position Column -->
-  <ng-container matColumnDef="id">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> ID </th>
-    <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-  </ng-container>
+      <!-- Id Column -->
+      <ng-container matColumnDef="id">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> ID </th>
+        <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
 
-  <!-- Name Column -->
-  <ng-container matColumnDef="nome">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Nome </th>
-    <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
-  </ng-container>
+      <!-- Nome Column -->
+      <ng-container matColumnDef="nome">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Nome </th>
+        <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+      </ng-container>
 
-  <!-- Weight Column -->
-  <ng-container matColumnDef="atualizadaEm">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Atualizada em </th>
-    <td mat-cell *matCellDef="let element"> 21/05/2019 </td>
-  </ng-container>
+      <!-- Atualizada Column -->
+      <ng-container matColumnDef="atualizadaEm">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Atualizada em </th>
+        <td mat-cell *matCellDef="let element"> 21/05/2019 </td>
+      </ng-container>
 
-  <!-- Symbol Column -->
-  <ng-container matColumnDef="status">
-    <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Status </th>
-    <td mat-cell *matCellDef="let element">
-      <mat-chip-list aria-label="Fish selection">
-        <mat-chip color="primary" selected class="chip-status">ativa</mat-chip>
-      </mat-chip-list>
-      <mat-chip-list aria-label="Fish selection">
-        <mat-chip color="warn" selected class="chip-status">inativa</mat-chip>
-      </mat-chip-list>
-    </td>
-  </ng-container>
+      <!-- Status Column -->
+      <ng-container matColumnDef="status">
+        <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Status </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="primary" selected class="chip-status">ativa</mat-chip>
+          </mat-chip-list>
+          <mat-chip-list aria-label="Fish selection">
+            <mat-chip color="warn" selected class="chip-status">inativa</mat-chip>
+          </mat-chip-list>
+        </td>
+      </ng-container>
 
-  <!-- Action Column -->
-  <ng-container matColumnDef="acoes">
-    <th mat-header-cell *matHeaderCellDef class="title-column"> Ações </th>
-    <td mat-cell *matCellDef="let element">
-      <mat-icon aria-hidden="false" aria-label="Example edit icon" class="icon-action" id="icon-action-edit">edit</mat-icon>
-      <mat-icon aria-hidden="false" aria-label="Example delete icon" class="icon-action" id="icon-action-delet">delete</mat-icon>
-     <!-- <button mat-flat-button color="primary" class="button-actions">editar</button>
+      <!-- Ação Column -->
+      <ng-container matColumnDef="acoes">
+        <th mat-header-cell *matHeaderCellDef class="title-column"> Ações </th>
+        <td mat-cell *matCellDef="let element">
+          <mat-icon aria-hidden="false" aria-label="Example edit icon" class="icon-action" id="icon-action-edit">edit
+          </mat-icon>
+          <mat-icon aria-hidden="false" aria-label="Example delete icon" class="icon-action" id="icon-action-delet">
+            delete</mat-icon>
+          <!-- <button mat-flat-button color="primary" class="button-actions">editar</button>
       <button mat-flat-button color="warn"
       class="button-actions">excluir</button>
       -->
-    </td>
-  </ng-container>
+        </td>
+      </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
       <tr mat-row *matRowDef="let row; columns: displayedColumns;">
