@@ -1,0 +1,61 @@
+table {
+  width: 100%;
+  box-shadow: none;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+.mat-elevation-z8 {
+  box-shadow: none;
+
+}
+
+.data-table {
+  margin: 20px;
+  box-shadow: none;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: rgb(243, 243, 243);
+
+}
+
+/*
+td, th {
+  border-color: rgb(243, 243, 243);
+}
+*/
+
+/*
+Botões da coluna Ação
+*/
+.button-actions {
+  margin-right: 8px;
+}
+
+/*
+Ícones da coluna Ação
+*/
+.icon-action {
+  margin-right: 10px;
+}
+
+/*
+Título das colunas
+*/
+.title-column {
+  color: black;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/*
+Ícones editar e deletar da coluna Ação
+*/
+#icon-action-edit, #icon-action-delet  {
+  color: rgb(24, 24, 24)
+}
+
+.chip-status {
+  border-radius: 3px;
+}
