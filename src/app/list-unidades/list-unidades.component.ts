@@ -44,6 +44,8 @@ export class ListUnidadesComponent implements OnInit {
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
+  searchKey: string;
+
   constructor() {
     // Cria 30 unidades
     const unidades = Array.from({length: 30}, (_, k) => createNewUnidades(k + 1));
@@ -65,6 +67,11 @@ export class ListUnidadesComponent implements OnInit {
     }
   }
 
+  onSearchClear() {
+    this.searchKey = "";
+    this.applyFilter(this.searchKey);
+  }
+
 }
 
 /** Builds and returns a new Unidade. */
@@ -79,4 +86,6 @@ function createNewUnidades(id: number): UnidadeData {
     status: status
   };
 }
+
+
 
