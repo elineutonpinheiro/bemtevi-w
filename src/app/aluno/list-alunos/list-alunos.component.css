@@ -12,9 +12,23 @@ table {
   box-shadow: none;
 }
 
+
+.container-table-arrounded {
+  padding-top: 2px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+
+
 .mat-row:nth-child(odd) {
   background-color: rgb(243, 243, 243);
 
+}
+
+.mat-cell {
+  font-size: 10pt;
 }
 
 /*
@@ -43,7 +57,7 @@ Título das colunas
 .title-column {
   color: black;
   font-weight: bold;
-  font-size: 16px;
+  font-size: 10pt;
 }
 
 /*
@@ -59,6 +73,7 @@ Título das colunas
 
 .div-bar-options {
   width: 100%;
+  margin-bottom: 10px;
   /*
   Elemento centralizados verticalmente
   */
@@ -67,7 +82,7 @@ Título das colunas
 
 }
 /*
-  Div separadora dos barra e dataTable
+  Div separadora dos barra e dataTable = RETIRADA
   */
 .div-containment {
   padding: 20px;

@@ -6,9 +6,10 @@ import {MatTableDataSource} from '@angular/material/table';
 export interface UnidadeData {
   id: string;
   nome: string;
-  endereco: string;
-  contato: string;
-  status: string;
+  turmas: string;
+  profissionais: string;
+  alunos: string;
+  responsaveis: string;
 }
 
 /** Constants used to fill up our data base. */
@@ -17,15 +18,24 @@ export interface UnidadeData {
 /* É mais correto por uma tabela só ou criar um elemento para cada propriedade? */
 /*------------------------------------------------------------------------------*/
 
-const CONTATOS: string[] = [
-  '95991118293', '95991017195', '95991010110', '95981103320'
-];
-const NOMES: string[] = [
-  'São José', 'Vovó Francisca da Silva Magalhães', 'Vovó Ataíde', 'Vanda Pinto'
+const UNIDADES: string[] = [
+  'Escolhinha Feliz', 'Arco-Íris', 'Bela Escuela', 'Corujinha'
 ];
 
-const ENDERECOS: string[] = [
-  'Av. Adão', 'Av. Eva', 'Rua Cain', 'Rua Abel'
+const TURMAS: string[] = [
+  '1', '2', '3', '4'
+];
+
+const PROFISSIONAIS: string[] = [
+  '1', '2', '3', '4'
+];
+
+const ALUNOS: string[] = [
+  '10', '20', '30', '40'
+];
+
+const RESPONSAVEIS: string[] = [
+  '10', '20', '30', '40'
 ];
 
 /**
@@ -38,7 +48,7 @@ const ENDERECOS: string[] = [
   styleUrls: ['./list-unidades.component.css']
 })
 export class ListUnidadesComponent implements OnInit {
-  displayedColumns: string[] = ['id', 'nome', 'atualizadaEm', 'status', 'acoes'];
+  displayedColumns: string[] = ['nome', 'turmas', 'profissionais', 'alunos', 'responsaveis', 'acoes'];
   dataSource: MatTableDataSource<UnidadeData>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -47,8 +57,8 @@ export class ListUnidadesComponent implements OnInit {
   searchKey: string;
 
   constructor() {
-    // Cria 30 unidades
-    const unidades = Array.from({length: 30}, (_, k) => createNewUnidades(k + 1));
+    // Cria 20 unidades
+    const unidades = Array.from({length: 20}, (_, k) => createNewUnidade(k + 1));
 
     // Assign the data to the data source for the table to render
     this.dataSource = new MatTableDataSource(unidades);
@@ -75,15 +85,16 @@ export class ListUnidadesComponent implements OnInit {
 }
 
 /** Builds and returns a new Unidade. */
-function createNewUnidades(id: number): UnidadeData {
-  const nome = NOMES[Math.round(Math.random() * (NOMES.length - 1))];
+function createNewUnidade(id: number): UnidadeData {
+  const unidades = UNIDADES[Math.round(Math.random() * (UNIDADES.length - 1))];
 
   return {
     id: id.toString(),
-    nome: nome,
-    endereco: ENDERECOS[Math.round(Math.random() * (ENDERECOS.length - 1))],
-    contato: CONTATOS[Math.round(Math.random() * (CONTATOS.length - 1))],
-    status: status
+    nome: unidades,
+    turmas: TURMAS[Math.round(Math.random() * (TURMAS.length - 1))],
+    profissionais: PROFISSIONAIS[Math.round(Math.random() * (PROFISSIONAIS.length - 1))],
+    alunos: ALUNOS[Math.round(Math.random() * (ALUNOS.length - 1))],
+    responsaveis: RESPONSAVEIS[Math.round(Math.random() * (RESPONSAVEIS.length - 1))]
   };
 }
 

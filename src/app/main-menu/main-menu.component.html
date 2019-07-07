@@ -1,0 +1,43 @@
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer class="sidenav" fixedInViewport [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+    [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
+    <mat-toolbar color="primary">
+      <div class="container-img">
+        <img src="assets\img\logo-site.png" alt="bem.te.vi">
+      </div>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-unidades">
+        <mat-icon aria-label="escola" style="padding-right: 5px">business</mat-icon>
+        Unidades
+      </a>
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-turmas">
+        <mat-icon aria-label="escola" style="padding-right: 5px">class</mat-icon>
+        Turmas
+      </a>
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-profissionais">
+        <mat-icon aria-label="escola" style="padding-right: 5px">school</mat-icon>
+        Profissionais
+      </a>
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-alunos">
+        <mat-icon aria-label="escola" style="padding-right: 5px">child_care</mat-icon>
+        Alunos
+      </a>
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-responsaveis">
+        <mat-icon aria-label="escola" style="padding-right: 5px">people</mat-icon>
+        Responsáveis
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button type="button" aria-label="Toggle sidenav" mat-icon-button (click)="drawer.toggle()">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <span>Escolinha Feliz</span>
+    </mat-toolbar>
+    <!-- Add Content Here -->
+    <ng-content #home></ng-content>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
