@@ -1,4 +1,9 @@
+import { Router } from '@angular/router';
+import { UnidadeService } from './../../services/unidade.service';
+import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { Unidade } from './../../models/unidade.models';
 import { Component, OnInit } from '@angular/core';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-edit-unidades',
@@ -7,9 +12,55 @@ import { Component, OnInit } from '@angular/core';
 })
 export class EditUnidadesComponent implements OnInit {
 
-  constructor() { }
+
+  unidade: Unidade;
+  form: FormGroup;
+
+  constructor(private unidadeService: UnidadeService,
+              private formBuilder: FormBuilder,
+              private router: Router) { }
 
   ngOnInit() {
+     const unidadeId = localStorage.getItem('editUnidadeId');
+
+     if (!unidadeId) {
+      alert('Ação Inválida.');
+      this.router.navigate(['unidades']);
+      return;
+    }
+     this.createForm();
+     this.unidadeService.getUnidadeById(+unidadeId).subscribe(dados => {
+     this.form.setValue(dados);
+    });
+  }
+
+  createForm() {
+    this.form = this.formBuilder.group({
+      id: [],
+      nome: [null, [Validators.required, Validators.minLength(3)]],
+    });
+
+    /* --------------------------------------
+       Não entendi o porquê de ser necessário
+       estar todos os campos no form
+
+       Quando atualiza, o elemento vai para
+       baixo na listagem
+       -------------------------------------- */
+  }
+
+  onSubmit() {
+    this.updateUnidade();
+  }
+
+  updateUnidade() {
+    this.unidadeService.updateUnidade(this.form.value).pipe(first()).subscribe(
+      dados => {
+        this.router.navigate(['unidades']);
+      },
+      error => {
+        alert(error);
+      });
   }
 
 }

@@ -30,3 +30,47 @@
   vertical-align: top;
   text-align: center;
 }
+
+/* ======= COMPONENT USER OPTIONS ========*/
+
+/*Organizador da Info do User do outro lado*/
+.spacer {
+  flex: 1 1 auto;
+}
+
+.circle {
+  background-color: rgb(243, 243, 243);
+  border-radius: 50%;
+  width: 38px;
+  height: 38px;
+  overflow: hidden;
+  position: relative;
+  margin-right: 8px;
+}
+
+.circle img {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+.userOptions {
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 400px;
+  background: #243386;
+  border-radius: 30px;
+  padding: 2px 3px 2px 3px;
+
+}
+
+.userName{
+  font-size: 12px;
+}
+
+.userMenu{
+
+}

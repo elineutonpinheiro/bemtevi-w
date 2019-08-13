@@ -42,7 +42,7 @@ const ACESSO: string[] = [
 })
 export class ListResponsaveisComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome', 'alunos', 'contato', 'acesso', 'acoes'];
+  displayedColumns: string[] = ['nome', 'alunos', 'contato', 'acoes'];
   dataSource: MatTableDataSource<ResponsavelData>;
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
@@ -61,14 +61,6 @@ export class ListResponsaveisComponent implements OnInit {
   ngOnInit() {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
-
-    //Criar método para traduzir o MatPaginator
-    this.paginator._intl.itemsPerPageLabel = 'Itens por página';
-    this.paginator._intl.firstPageLabel = 'Primeira página';
-    this.paginator._intl.nextPageLabel = 'Seguinte';
-    this.paginator._intl.previousPageLabel = 'Anterior';
-    this.paginator._intl.lastPageLabel = 'Última página';
-
   }
 
   applyFilter(filterValue: string) {

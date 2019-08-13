@@ -1,0 +1,85 @@
+{
+  "unidades": [
+    {
+      "id": 1,
+      "nome": "Vovó Francisco",
+      "nome": "Profª. Conceição",
+      "turmas": 3,
+      "profissionais": 11,
+      "alunos": 66,
+      "isAtiva": false
+    },
+    {
+      "id": 2,
+      "nome": "Profª. Conceição",
+      "turmas": 3,
+      "profissionais": 11,
+      "alunos": 66,
+      "isAtiva": false
+    },
+    {
+      "id": 3,
+      "nome": "Vovó Letícia",
+      "turmas": 3,
+      "profissionais": 8,
+      "alunos": 50,
+      "isAtiva": true
+    },
+    {
+      "id": 4,
+      "nome": "Vovó Ataíde",
+      "turmas": 3,
+      "profissionais": 16,
+      "alunos": 72,
+      "isAtiva": true
+    },
+    {
+      "id": 5,
+      "nome": "Vanda Pinto",
+      "turmas": 4,
+      "profissionais": 12,
+      "alunos": 62,
+      "isAtiva": true
+    },
+    {
+      "id": 1,
+      "nome": "Monteiro Lobato",
+      "turmas": 3,
+      "profissionais": 10,
+      "alunos": 50,
+      "isAtiva": false
+    },
+    {
+      "nome": "hkjkj",
+      "id": 6
+    },
+    {
+      "nome": "asasasas",
+      "id": 7
+    },
+    {
+      "nome": "sdsdsdsd",
+      "id": 8
+    },
+    {
+      "nome": "sasasasasas",
+      "id": 9
+    },
+    {
+      "nome": "asasasasas",
+      "id": 10
+    },
+    {
+      "nome": "dddddddddddddd",
+      "id": 11
+    },
+    {
+      "nome": "Vo teste",
+      "id": 12
+    },
+    {
+      "nome": "Vo teste 2",
+      "id": 13
+    }
+  ]
+}

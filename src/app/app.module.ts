@@ -1,3 +1,9 @@
+import { TurmaService } from './services/turma.service';
+import { ResponsavelService } from './services/responsavel.service';
+import { ProfissionalService } from './services/profissional.service';
+import { UnidadeService } from './services/unidade.service';
+import { AlunoService } from './services/aluno.service';
+
 import { MatPaginatorIntl } from '@angular/material';
 import { PortalModule } from '@angular/cdk/portal';
 import { MaterialModule } from './material-module/material-module';
@@ -10,7 +16,7 @@ import { AppComponent } from './app.component';
 import { MainMenuComponent } from './main-menu/main-menu.component';
 import { LayoutModule } from '@angular/cdk/layout';
 import { ScrollingModule } from '@angular/cdk/scrolling';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddUnidadesComponent } from './unidade/add-unidades/add-unidades.component';
 import { EditUnidadesComponent } from './unidade/edit-unidades/edit-unidades.component';
 import { HomeComponent } from './home/home.component';
@@ -26,7 +32,9 @@ import { ListResponsaveisComponent } from './responsavel/list-responsaveis/list-
 import { AddAlunosComponent } from './aluno/add-alunos/add-alunos.component';
 import { EditAlunosComponent } from './aluno/edit-alunos/edit-alunos.component';
 import { ListAlunosComponent } from './aluno/list-alunos/list-alunos.component';
-import { getPtBrasileiroPaginatorIntl } from './ptBR-paginator-intl';
+import { myMatPaginatorIntl } from './myMatPaginatorIntl';
+import { HttpClientModule } from '@angular/common/http';
+import { RodapeComponent } from './rodape/rodape.component';
 
 @NgModule({
   declarations: [
@@ -47,7 +55,8 @@ import { getPtBrasileiroPaginatorIntl } from './ptBR-paginator-intl';
     ListResponsaveisComponent,
     AddAlunosComponent,
     EditAlunosComponent,
-    ListAlunosComponent
+    ListAlunosComponent,
+    RodapeComponent,
   ],
   imports: [
     BrowserModule,
@@ -56,11 +65,14 @@ import { getPtBrasileiroPaginatorIntl } from './ptBR-paginator-intl';
     PortalModule,
     ScrollingModule,
     FormsModule,
+    ReactiveFormsModule,
     LayoutModule,
-    MaterialModule
+    MaterialModule,
+    HttpClientModule
   ],
   providers: [
-    {provide: MatPaginatorIntl, useValue: getPtBrasileiroPaginatorIntl() }
+    { provide: MatPaginatorIntl, useValue: myMatPaginatorIntl() },
+    UnidadeService, AlunoService, ProfissionalService, ResponsavelService, TurmaService
   ],
   bootstrap: [AppComponent]
 })

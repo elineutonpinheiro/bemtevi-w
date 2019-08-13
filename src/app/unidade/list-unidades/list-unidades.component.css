@@ -12,7 +12,6 @@ table {
   box-shadow: none;
 }
 
-
 .container-table-arrounded {
   padding-top: 2px;
   background-color: white;
@@ -20,22 +19,23 @@ table {
   border-top-right-radius: 5px;
 }
 
-
-
 .mat-row:nth-child(odd) {
   background-color: rgb(243, 243, 243);
-
 }
 
 .mat-cell {
-  font-size: 10pt;
+  font-size: 14px;
 }
 
-/*
+td.mat-cell {
+  padding: 10px;
+}
+
+/* Bordas das linhas */
 td, th {
   border-color: rgb(243, 243, 243);
 }
-*/
+
 
 /*
 Botões da coluna Ação
@@ -82,8 +82,8 @@ Título das colunas
 
 }
 /*
-  Div separadora dos barra e dataTable = RETIRADA
-  */
+Div separadora dos barra e dataTable = RETIRADA
+*/
 .div-containment {
   padding: 20px;
   height: 43px;
@@ -95,7 +95,6 @@ Título das colunas
 /*
 Campo de pesquisa
 */
-
 .div-search {
   width: 50%;
   padding: 0px;
@@ -116,15 +115,13 @@ Campo de pesquisa
     border-top: 0px !important;
   }
 
-  ::ng-deep .mat-form-field-suffix button {
+  /* ::ng-deep .mat-form-field-suffix button {
 
-  }
+  } */
 
   ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
     display: none !important;
   }
-
-
 
 .div-new {
   width: 50%;

@@ -3,27 +3,27 @@
     [mode]="(isHandset$ | async) ? 'over' : 'side'" [opened]="(isHandset$ | async) === false">
     <mat-toolbar color="primary">
       <div class="container-img">
-        <img src="assets\img\logo-site.png" alt="bem.te.vi">
+        <img src="assets\img\logo-site.png" alt="bemtevi">
       </div>
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-unidades">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/unidades">
         <mat-icon aria-label="escola" style="padding-right: 5px">business</mat-icon>
         Unidades
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-turmas">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/turmas">
         <mat-icon aria-label="escola" style="padding-right: 5px">class</mat-icon>
         Turmas
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-profissionais">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/profissionais">
         <mat-icon aria-label="escola" style="padding-right: 5px">school</mat-icon>
         Profissionais
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-alunos">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/alunos">
         <mat-icon aria-label="escola" style="padding-right: 5px">child_care</mat-icon>
         Alunos
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/list-responsaveis">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/responsaveis">
         <mat-icon aria-label="escola" style="padding-right: 5px">people</mat-icon>
         Responsáveis
       </a>
@@ -35,9 +35,52 @@
         <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
       </button>
       <span>Escolinha Feliz</span>
+      <!-- ======= COMPONENT USER OPTIONS ======== -->
+      <span class="spacer"></span>
+      <div class="userOptions">
+          <div class="circle">
+              <img src="https://i.stack.imgur.com/atUuf.png">
+          </div>
+          <div class="userName">Francisco Elineuton Pinheiro da Silva</div>
+          <div class="userMenu">
+              <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+                  <mat-icon>more_vert</mat-icon>
+                  <!-- <mat-icon>arrow_drop_down_circle</mat-icon>
+                  <mat-icon>arrow_drop_down</mat-icon> -->
+                </button>
+                <mat-menu #menu="matMenu">
+                  <button mat-menu-item>
+                    <mat-icon>account_circle</mat-icon>
+                    <span>Perfil</span>
+                  </button>
+                  <!-- <button mat-menu-item disabled>
+                    <mat-icon>voicemail</mat-icon>
+                    <span>Check voice mail</span>
+                  </button> -->
+                  <button mat-menu-item>
+                    <mat-icon>notifications</mat-icon>
+                    <span>Notificações</span>
+                  </button>
+                  <button mat-menu-item (click)="logout()" >
+                      <mat-icon>exit_to_app</mat-icon>
+                      <span>Sair</span>
+                    </button>
+                </mat-menu>
+          </div>
+        <!-- ================================== FIM DO COMPONENT USER OPTIONS ============================================ -->
+      </div>
+
     </mat-toolbar>
-    <!-- Add Content Here -->
-    <ng-content #home></ng-content>
-    <router-outlet></router-outlet>
+    <!-- Add Content Here-->
+    <ng-content></ng-content>
+
+    <router-outlet>
+      <!-- <div>
+        <ng-content #corpo></ng-content>
+      </div>
+      <div>
+        <ng-content #rodape></ng-content>
+      </div> -->
+    </router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>

@@ -1,46 +1,13 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {MatPaginator} from '@angular/material/paginator';
-import {MatSort} from '@angular/material/sort';
-import {MatTableDataSource} from '@angular/material/table';
-
-export interface UnidadeData {
-  id: string;
-  nome: string;
-  turmas: string;
-  profissionais: string;
-  alunos: string;
-  responsaveis: string;
-}
-
-/** Constants used to fill up our data base. */
-
-/*------------------------------------------------------------------------------*/
-/* É mais correto por uma tabela só ou criar um elemento para cada propriedade? */
-/*------------------------------------------------------------------------------*/
-
-const UNIDADES: string[] = [
-  'Escolhinha Feliz', 'Arco-Íris', 'Bela Escuela', 'Corujinha'
-];
-
-const TURMAS: string[] = [
-  '1', '2', '3', '4'
-];
-
-const PROFISSIONAIS: string[] = [
-  '1', '2', '3', '4'
-];
-
-const ALUNOS: string[] = [
-  '10', '20', '30', '40'
-];
-
-const RESPONSAVEIS: string[] = [
-  '10', '20', '30', '40'
-];
-
-/**
- * @title Data table with sorting, pagination, and filtering.
-*/
+import { UnidadeDataSource } from './../../services/unidade.datasource';
+import { Router, ActivatedRoute } from '@angular/router';
+import { Observable } from 'rxjs';
+import { Unidade } from './../../models/unidade.models';
+import { UnidadeService } from '../../services/unidade.service';
+import { Component, OnInit, ViewChild } from '@angular/core';
+import { MatPaginator } from '@angular/material/paginator';
+import { MatSort } from '@angular/material/sort';
+import { MatTableDataSource } from '@angular/material/table';
+import { tap } from 'rxjs/operators';
 
 @Component({
   selector: 'app-list-unidades',
@@ -48,23 +15,24 @@ const RESPONSAVEIS: string[] = [
   styleUrls: ['./list-unidades.component.css']
 })
 export class ListUnidadesComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'turmas', 'profissionais', 'alunos', 'responsaveis', 'acoes'];
-  dataSource: MatTableDataSource<UnidadeData>;
+  displayedColumns: string[] = ['nome', 'turmas', 'alunos', 'profissionais', 'status', 'acoes'];
+  dataSource = new MatTableDataSource<Unidade>();
 
-  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
-  @ViewChild(MatSort, {static: true}) sort: MatSort;
+  @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
+  @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   searchKey: string;
 
-  constructor() {
-    // Cria 20 unidades
-    const unidades = Array.from({length: 20}, (_, k) => createNewUnidade(k + 1));
+  constructor(private unidadeService: UnidadeService, private router: Router){
 
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(unidades);
   }
 
   ngOnInit() {
+    //this.getAllOwners();
+    this.getUnidades();
+  }
+
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -82,21 +50,112 @@ export class ListUnidadesComponent implements OnInit {
     this.applyFilter(this.searchKey);
   }
 
+  getUnidades = () => {
+    this.unidadeService.getUnidades()
+    .subscribe(dados => {
+      this.dataSource.data = dados as Unidade[];
+    });
+  }
+
+  editUnidade(unidade: Unidade): void{
+    localStorage.removeItem('editUnidadeId');
+    localStorage.setItem('editUnidadeId', unidade.id.toString());
+    this.router.navigate(['edit-unidade']);
+
+
+    //Neste método, recuperar o objeto e copiar a propriedade pra ele
+
+  }
 }
 
-/** Builds and returns a new Unidade. */
-function createNewUnidade(id: number): UnidadeData {
-  const unidades = UNIDADES[Math.round(Math.random() * (UNIDADES.length - 1))];
+/* -------------------------------------------------------
+    Ao criar a primeira Unidade, a lista não é atualizada.
+    Apenas quando após a segunda que fica atualizando
+   ------------------------------------------------------- */
 
-  return {
-    id: id.toString(),
-    nome: unidades,
-    turmas: TURMAS[Math.round(Math.random() * (TURMAS.length - 1))],
-    profissionais: PROFISSIONAIS[Math.round(Math.random() * (PROFISSIONAIS.length - 1))],
-    alunos: ALUNOS[Math.round(Math.random() * (ALUNOS.length - 1))],
-    responsaveis: RESPONSAVEIS[Math.round(Math.random() * (RESPONSAVEIS.length - 1))]
-  };
-}
+  /*  //unidade: Unidade;
+  dataSource =  UnidadeDataSource;
+  displayedColumns: string[] = ['nome', 'turmas', 'alunos', 'profissionais', 'status', 'acoes'];
+  //dataSource: MatTableDataSource<Unidade>;
 
+  //unidades: Observable<Unidade[]>;
+
+  //unidade: Unidade;
+
+   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  //@ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  //@ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  //searchKey: string;
+
+  constructor(private unidadeService: UnidadeService, private router: ActivatedRoute) {
+      //this.dataSource = new MatTableDataSource();
+
+  }
+
+  ngOnInit() {
+    //this.dataSource.paginator = this.paginator;
+    //this.dataSource.sort = this.sort;
+    this.unidade = this.router.snapshot.data["unidade"];
+    this.dataSource = new UnidadeDataSource(this.unidadeService);
+    //this.dataSource.loadUnidades(this.unidade.id, '', 'asc', 0, 3);
+    //this.getUnidades();
+  } */
+
+  /* ngAfterViewInit() {
+    this.paginator.page
+      .pipe(
+          tap(() => this.loadUnidadePage())
+      )
+      .subscribe();
+  }
+
+  loadUnidadePage() {
+    this.dataSource.loadUnidades(
+      this.unidade.id,
+      '',
+      'asc',
+      this.paginator.pageIndex,
+      this.paginator.pageSize);
+  } */
+
+  /* applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  } */
+
+  /* onSearchClear() {
+    this.searchKey = "";
+    this.applyFilter(this.searchKey);
+  } */
+
+  /* reloadData() {
+    this.unidades = this.unidadeService.getUnidades();
+  }
+
+  deleteUnidade(id: number) {
+    this.unidadeService.deleteUnidade(id)
+      .subscribe(
+        data => {
+          console.log(data);
+          console.log('Unidade Excluida com Sucesso!');
+          this.getUnidades();
+        },
+        error => console.log(error));
+  } */
+
+  /* editUnidade(unidade: Unidade): void{
+    localStorage.removeItem('editUnidadeId');
+    localStorage.setItem('editUnidadeId', unidade.id.toString());
+    this.router.navigate(['edit-unidade']);
+  } */
+
+  /* getUnidades(): any {
+   return this.unidadeService.getUnidades()
+   .subscribe(dados => this.dataSource = new MatTableDataSource(dados));
+  } */
 
 

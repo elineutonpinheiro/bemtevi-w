@@ -82,14 +82,7 @@ import {MatTreeModule} from '@angular/material/tree';
     MatToolbarModule,
     MatTooltipModule,
     MatTreeModule,
-    MatButtonModule,
-    MatIconModule,
-    MatListModule,
-    MatSidenavModule,
-    MatToolbarModule,
-    MatFormFieldModule,
-    MatPaginatorModule,
-    MatSortModule
+    MatFormFieldModule
   ]
 })
 export class MaterialModule {}
