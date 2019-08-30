@@ -14,7 +14,8 @@ export class AddUnidadesComponent implements OnInit {
 
   form: FormGroup;
   unidade: Unidade = new Unidade();
-  submitted: boolean = false;
+  submitted = false;
+  checked = false;
 
   constructor(private unidadeService: UnidadeService,
               private formBuilder: FormBuilder,
@@ -24,9 +25,25 @@ export class AddUnidadesComponent implements OnInit {
     this.createForm();
   }
 
+  //Troca a cor do botão quando o input está válido
+  validaStyleButtonSalvar() {
+    if(this.form.valid) {
+      return {
+        'background': '#3f51b5',
+        'color': '#fff',
+        'border': '1px solid #3f51b5'
+      };
+    }
+  }
+
+
   createForm() {
     this.form = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(3)]]
+      nome: [null, [Validators.required, Validators.minLength(3)]],
+      isAtiva: true,
+      turmas: 0,
+      alunos: 0,
+      profissionais: 0
     });
   }
 

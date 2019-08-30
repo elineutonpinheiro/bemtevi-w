@@ -1,0 +1,36 @@
+.container{
+  padding: 10px;
+}
+
+.title-container{
+  margin-bottom: 10px;
+}
+
+.simbol-icon {
+    position: relative;
+    background: red;
+    /* border-radius: 50%; */
+    line-height: 35px;
+    width: 35px;
+    height: 35px;
+    text-align: center;
+    font-size: 14px;
+    color: #FFF;
+    display: inline-block;
+}
+
+.simbol-title {
+  display: inline-block;
+  margin-left: 5px;
+
+}
+
+.text-inside-right-grid{
+  position: absolute;
+  right: 5px;
+}
+
+.text-inside-left-grid{
+  position: absolute;
+  left: 5px;
+}

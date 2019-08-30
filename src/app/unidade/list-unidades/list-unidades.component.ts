@@ -24,8 +24,8 @@ export class ListUnidadesComponent implements OnInit {
   searchKey: string;
 
   constructor(private unidadeService: UnidadeService, private router: Router){
-
-  }
+    this.getUnidades()
+   }
 
   ngOnInit() {
     //this.getAllOwners();
@@ -57,15 +57,7 @@ export class ListUnidadesComponent implements OnInit {
     });
   }
 
-  editUnidade(unidade: Unidade): void{
-    localStorage.removeItem('editUnidadeId');
-    localStorage.setItem('editUnidadeId', unidade.id.toString());
-    this.router.navigate(['edit-unidade']);
 
-
-    //Neste método, recuperar o objeto e copiar a propriedade pra ele
-
-  }
 }
 
 /* -------------------------------------------------------

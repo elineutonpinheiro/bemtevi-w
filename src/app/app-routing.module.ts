@@ -1,3 +1,4 @@
+import { ViewUnidadesComponent } from './unidade/view-unidades/view-unidades.component';
 import { EditUnidadesComponent } from './unidade/edit-unidades/edit-unidades.component';
 import { ListResponsaveisComponent } from './responsavel/list-responsaveis/list-responsaveis.component';
 import { ListProfissionaisComponent } from './profissional/list-profissionais/list-profissionais.component';
@@ -16,7 +17,8 @@ const routes: Routes = [
   {path: 'responsaveis', component: ListResponsaveisComponent},
   {path: 'alunos', component: ListAlunosComponent},
   {path: 'add-unidade', component: AddUnidadesComponent},
-  {path: 'edit-unidade', component: EditUnidadesComponent}
+  {path: 'edit-unidade', component: EditUnidadesComponent},
+  {path: 'view-unidade', component: ViewUnidadesComponent}
 
 
 ];

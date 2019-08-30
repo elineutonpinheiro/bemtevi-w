@@ -18,9 +18,24 @@ export class MainMenuComponent {
 
   constructor(private breakpointObserver: BreakpointObserver, private router: Router) {}
 
+  isHome = false;
+
   logout() {
     console.log("Usuário deslogado! Seguir para a page de Login")
     this.router.navigate(['']);
+  }
+
+  goHome() {
+    console.log("Usuário vai para a página inicial")
+    this.router.navigate(['']);
+  }
+
+  otherPage() {
+    this.isHome = false;
+  }
+
+  homePage() {
+    this.isHome = true;
   }
 
 }

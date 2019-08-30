@@ -38,6 +38,7 @@ export class EditUnidadesComponent implements OnInit {
     this.form = this.formBuilder.group({
       id: [],
       nome: [null, [Validators.required, Validators.minLength(3)]],
+      isAtiva: []
     });
 
     /* --------------------------------------
@@ -61,6 +62,22 @@ export class EditUnidadesComponent implements OnInit {
       error => {
         alert(error);
       });
+  }
+
+  //Troca a cor do botão quando o input está válido
+  validaStyleButtonSalvar() {
+    if(this.form.valid) {
+      return {
+        'background': '#3f51b5',
+        'color': '#fff',
+        'border': '1px solid #3f51b5'
+      };
+    }
+  }
+
+  gotoList() {
+    this.unidadeService.getUnidades();
+    this.router.navigate(['/unidades']);
   }
 
 }

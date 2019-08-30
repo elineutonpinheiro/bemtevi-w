@@ -2,84 +2,231 @@
   "unidades": [
     {
       "id": 1,
-      "nome": "Vovó Francisco",
-      "nome": "Profª. Conceição",
-      "turmas": 3,
-      "profissionais": 11,
-      "alunos": 66,
-      "isAtiva": false
+      "nome": "Profª. Deusdete Coelho",
+      "isAtiva": null
     },
     {
       "id": 2,
       "nome": "Profª. Conceição",
-      "turmas": 3,
-      "profissionais": 11,
-      "alunos": 66,
+      "enderecamento": {
+        "cep": "69.317-234",
+        "numero": "127",
+        "complemento": "Próx. ao Supermecado Gavião"
+      },
+      "contatos": [
+        {
+          "id": 3,
+          "numero": "9536249090"
+        },
+        {
+          "id": 3,
+          "numero": "9536249090"
+        }
+      ],
       "isAtiva": false
     },
     {
       "id": 3,
-      "nome": "Vovó Letícia",
-      "turmas": 3,
-      "profissionais": 8,
-      "alunos": 50,
-      "isAtiva": true
-    },
-    {
-      "id": 4,
-      "nome": "Vovó Ataíde",
-      "turmas": 3,
-      "profissionais": 16,
-      "alunos": 72,
-      "isAtiva": true
-    },
-    {
-      "id": 5,
-      "nome": "Vanda Pinto",
-      "turmas": 4,
-      "profissionais": 12,
-      "alunos": 62,
-      "isAtiva": true
-    },
-    {
-      "id": 1,
-      "nome": "Monteiro Lobato",
-      "turmas": 3,
-      "profissionais": 10,
-      "alunos": 50,
+      "nome": "Profª. Conceição",
+      "enderecamento": {
+        "cep": "69.317-234",
+        "numero": "127",
+        "complemento": "Próx. ao Supermecado Gavião"
+      },
+      "contatos": [
+        {
+          "id": 1,
+          "numero": "9536249090"
+        },
+        {
+          "id": 2,
+          "numero": "9536249090"
+        }
+      ],
       "isAtiva": false
     },
     {
-      "nome": "hkjkj",
+      "nome": "Casinha Feliz",
+      "id": 4
+    },
+    {
+      "nome": "Casinha Alegre",
+      "isAtiva": true,
+      "id": 5
+    },
+    {
+      "nome": "Testando Novamente ",
+      "isAtiva": true,
       "id": 6
     },
     {
-      "nome": "asasasas",
+      "nome": "Local",
+      "isAtiva": true,
       "id": 7
     },
     {
-      "nome": "sdsdsdsd",
+      "nome": "Escola",
+      "isAtiva": true,
+      "turmas": 0,
+      "alunos": 0,
+      "profissionais": 0,
       "id": 8
     },
     {
-      "nome": "sasasasasas",
+      "nome": "rtrtrtr",
+      "isAtiva": true,
+      "turmas": 0,
+      "alunos": 0,
+      "profissionais": 0,
       "id": 9
     },
     {
-      "nome": "asasasasas",
+      "nome": "sdsdsdsdsd",
+      "isAtiva": true,
+      "turmas": 0,
+      "alunos": 0,
+      "profissionais": 0,
       "id": 10
+    }
+  ],
+  "turmas": [
+    {
+      "id": 1,
+      "nome": "Infantil I",
+      "periodo": "Manhã",
+      "sala": "301 A",
+      "idUnidade": 1,
+      "isAtiva": true
     },
     {
-      "nome": "dddddddddddddd",
-      "id": 11
+      "id": 2,
+      "nome": "Infantil II",
+      "periodo": "Manhã",
+      "sala": "301 B",
+      "idUnidade": 1,
+      "isAtiva": false
     },
     {
-      "nome": "Vo teste",
-      "id": 12
+      "id": 3,
+      "nome": "Infantil I",
+      "periodo": "Manhã",
+      "sala": "301 A",
+      "idUnidade": 1,
+      "isAtiva": true
+    }
+  ],
+  "profissionais": [
+    {
+      "id": 1,
+      "nome": "Thiago Dias",
+      "cargo": "Cuidador",
+      "email": "thiagodias@gmail.com",
+      "turmas": [
+        {
+          "idTurma": 1
+        },
+        {
+          "idTurma": 2
+        }
+      ]
     },
     {
-      "nome": "Vo teste 2",
-      "id": 13
+      "id": 2,
+      "nome": "Thiago Dias",
+      "cargo": "Professor",
+      "email": "thiagodias@gmail.com",
+      "turmas": [
+        {
+          "idTurma": 1
+        },
+        {
+          "idTurma": 2
+        }
+      ]
+    }
+  ],
+  "alunos": [
+    {
+      "id": 1,
+      "nome": "Clara Ferreira",
+      "dataNascimento": "12/12/1993",
+      "sexo": "Feminino",
+      "endereco": {
+        "cep": "69.317-234",
+        "numero": "127",
+        "complemento": "Próx. ao Supermecado Gavião"
+      },
+      "idResponsavel": 1,
+      "pessoalAutorizado": [
+        {
+          "nome": "Letícia Ferreira",
+          "parentesco": "Avó"
+        },
+        {
+          "nome": "Letícia Ferreira",
+          "parentesco": "Avó"
+        }
+      ],
+      "idTurma": 1
+    },
+    {
+      "id": 2,
+      "nome": "Clara Ferreira",
+      "dataNascimento": "12/12/1993",
+      "sexo": "Feminino",
+      "endereco": {
+        "cep": "69.317-234",
+        "numero": "127",
+        "complemento": "Próx. ao Supermecado Gavião"
+      },
+      "idResponsavel": 2,
+      "pessoalAutorizado": [
+        {
+          "nome": "Letícia Ferreira",
+          "parentesco": "Avó"
+        },
+        {
+          "nome": "Letícia Ferreira",
+          "parentesco": "Avó"
+        }
+      ],
+      "idTurma": 1
+    }
+  ],
+  "responsaveis": [
+    {
+      "id": 1,
+      "nome": "Ana Ferreira",
+      "parentesco": "Mãe",
+      "cpf": "021.230.101-01",
+      "contatos": [
+        {
+          "id": 1,
+          "numero": "95991119009"
+        },
+        {
+          "id": 2,
+          "numero": "95991119009"
+        }
+      ],
+      "email": "anaferreira@gmail.com"
+    },
+    {
+      "id": 2,
+      "nome": "Ana Ferreira",
+      "parentesco": "Mãe",
+      "cpf": "021.230.101-01",
+      "contatos": [
+        {
+          "id": 1,
+          "numero": "95991119009"
+        },
+        {
+          "id": 2,
+          "numero": "95991119009"
+        }
+      ],
+      "email": "anaferreira@gmail.com"
     }
   ]
 }

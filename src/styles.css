@@ -1,6 +1,11 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+/* Importe do Tema da Aplicação */
 @import '@angular/material/prebuilt-themes/indigo-pink.css';
 
+
+/* Configurações Gerais */
 * {
   font-family: 'Roboto', Arial, sans-serif;
 
@@ -29,3 +34,147 @@ h1, h2 {
 p {
   font-size: 14px;
 }
+
+/* ===== Modelo de Apresentação das Tabelas de Dados ===== */
+
+.table-container{
+  height: 350px;
+  overflow: auto;
+}
+
+table {
+  width: 100%;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.mat-elevation-z8 {
+  box-shadow: none;
+}
+
+.data-table {
+  margin: 20px;
+  box-shadow: none;
+}
+
+.container-table-arrounded {
+  padding-top: 2px;
+  background-color: white;
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+.mat-row:nth-child(odd) {
+  background-color: rgb(243, 243, 243);
+}
+
+.mat-cell {
+  font-size: 14px;
+}
+
+td.mat-cell {
+  padding: 10px;
+}
+
+/* Bordas das linhas */
+td, th {
+  border-color: rgb(243, 243, 243);
+}
+
+/*
+Botões da coluna Ação
+*/
+.button-actions {
+  margin-right: 8px;
+}
+
+/*
+Ícones da coluna Ação
+*/
+.icon-action {
+  margin-right: 10px;
+}
+
+/*
+Título das colunas
+*/
+.title-column {
+  color: black;
+  font-weight: bold;
+  font-size: 10pt;
+}
+
+/*
+Ícones editar e deletar da coluna Ação
+*/
+#icon-action-edit, #icon-action-delete  {
+  color: rgb(24, 24, 24)
+}
+
+.chip-status {
+  border-radius: 3px;
+}
+
+.div-bar-options {
+  width: 100%;
+  margin-bottom: 10px;
+  /*
+  Elemento centralizados verticalmente
+  */
+  display: inline-block;
+  align-items: center;
+
+}
+/*
+Div separadora dos barra e dataTable = RETIRADA
+*/
+.div-containment {
+  padding: 20px;
+  height: 43px;
+  background-color: rgb(243, 243, 243);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+}
+
+/*
+Campo de pesquisa
+*/
+.div-search {
+  width: 50%;
+  padding: 0px;
+  float: left;
+
+  }
+  .search-form-field {
+    padding: 5px 10px;
+    background-color: white;
+    border-radius: 5px;
+    width: 96.5%;
+  }
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+  }
+
+  ::ng-deep .mat-form-field-infix {
+    border-top: 0px !important;
+  }
+
+  /* ::ng-deep .mat-form-field-suffix button {
+
+  } */
+
+  ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    display: none !important;
+  }
+
+.div-new {
+  width: 50%;
+  text-align: end;
+  margin: 0px;
+  float: left;
+}
+
+.mat-flat-button{
+  height: 42px;
+}
+
+/* ===== Fim das configurações das Tabelas de Dados ===== */

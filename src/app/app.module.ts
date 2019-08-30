@@ -35,6 +35,8 @@ import { ListAlunosComponent } from './aluno/list-alunos/list-alunos.component';
 import { myMatPaginatorIntl } from './myMatPaginatorIntl';
 import { HttpClientModule } from '@angular/common/http';
 import { RodapeComponent } from './rodape/rodape.component';
+import { UserMenuComponent } from './user-menu/user-menu.component';
+import { ViewUnidadesComponent } from './unidade/view-unidades/view-unidades.component';
 
 @NgModule({
   declarations: [
@@ -57,6 +59,8 @@ import { RodapeComponent } from './rodape/rodape.component';
     EditAlunosComponent,
     ListAlunosComponent,
     RodapeComponent,
+    UserMenuComponent,
+    ViewUnidadesComponent,
   ],
   imports: [
     BrowserModule,

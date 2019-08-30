@@ -1,3 +1,4 @@
+
 <p style="padding-left: 10px; font-weight: bold">
   <span>Editar Unidade</span>
 </p>
@@ -5,7 +6,7 @@
 <mat-divider></mat-divider>
 
 <section>
-  <div class="container" style="background: white;">
+  <div class="container">
 
     <form method="post" (ngSubmit)="onSubmit()" [formGroup]="form">
 
@@ -18,8 +19,16 @@
             <input matInput placeholder="Ex.: Escolinha Feliz" class="input-field" formControlName="nome">
           </mat-form-field>
         </div>
-        <div>
-          <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" class="button-form" id="button-atualizar">Atualizar</button>
+        <div style="margin-top: 10px">
+          <div style="padding-bottom: 5px">
+            <span style="font-weight: bold">Mudar status da Unidade para: </span>
+        </div>
+
+          <mat-checkbox>Ativa/Inativa</mat-checkbox>
+        </div>
+        <div style="margin-top: 60px">
+          <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" [ngStyle]="validaStyleButtonSalvar()" class="button-form" id="button-salvar">Salvar</button>
+          <button mat-flat-button color="primary" (click)="gotoList()" class="button-form" id="button-cancelar">Cancelar</button>
         </div>
       </div>
 

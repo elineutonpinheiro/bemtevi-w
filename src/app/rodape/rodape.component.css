@@ -1,0 +1,11 @@
+.footer {
+  text-align: center;
+  background: rgb(243, 243, 243);
+  height: 10%;
+}
+
+.content{
+  display: inline-block;
+  align-items: center;
+}
+
