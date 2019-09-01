@@ -33,69 +33,19 @@
       </mat-grid-tile>
     </mat-grid-list>
 
-
     <mat-divider style="margin-top: 40px; margin-bottom: 8px;"></mat-divider>
+
     <div>
-      <button mat-flat-button color="primary" class="buttonView" (click)="editUnidade()"
-      [routerLink]="['/edit-unidade']" style="width: 100px;">Editar</button>
-      <button mat-flat-button color="primary" class="buttonView" (click)="cancelar()"
-      [routerLink]="['/edit-unidade']"
-      style="background: white; border: 1px solid #3f51b5; color: #3f51b5; margin-left: 10px;
+      <button mat-flat-button color="primary" class="buttonView" (click)="editar()" [routerLink]="['/edit-unidade']"
+        style="width: 100px;">Editar</button>
+      <button mat-flat-button color="primary" class="buttonView" (click)="cancelar()" [routerLink]="['/edit-unidade']"
+        style="background: white; border: 1px solid #3f51b5; color: #3f51b5; margin-left: 10px;
       width: 100px;">Cancelar</button>
 
-      <button mat-flat-button color="primary" class="buttonView" (click)="cancelar()"
-      [routerLink]="['/edit-unidade']"
-      style="background: white; border: 1px solid red; color: red; margin-left: 10px;
+      <button mat-flat-button color="primary" class="buttonView" (click)="inativar()"
+        style="background: white; border: 1px solid red; color: red; margin-left: 10px;
       width: 100px; display: block; float: right;">Inativar</button>
     </div>
   </div>
 </div>
 
-
-<!--   <div class="details-container" style="background: white">
-    <mat-grid-list cols="12" rowHeight="3:1">
-      <mat-grid-tile colspan="12">
-        <div class="text-inside-left-grid">Informações</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2">
-        <div class="text-inside-right-grid">Nome:</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="10">
-        <div class="text-inside-left-grid">Professora Conceição</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2">
-        <div class="text-inside-right-grid">Endereço:</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="10">
-        <div class="text-inside-left-grid">Rua Euclides Gomes da Silva, 127 - Alvorada</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2">
-        <div class="text-inside-right-grid">Telefone:</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="10">
-        <div class="text-inside-left-grid">(95) 3623-5294</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="12">
-        <div class="text-inside-left-grid">Estrutura</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2">
-        <div class="text-inside-right-grid">Turmas:</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="10">
-        <div class="text-inside-left-grid">10</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2">
-        <div class="text-inside-right-grid">Alunos:</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="10">
-        <div class="text-inside-left-grid">150</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="2">
-        <div class="text-inside-right-grid">Profissionais:</div>
-      </mat-grid-tile>
-      <mat-grid-tile colspan="10">
-        <div class="text-inside-left-grid">10</div>
-      </mat-grid-tile>
-    </mat-grid-list>
-
-  </div> -->

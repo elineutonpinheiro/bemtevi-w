@@ -1,3 +1,5 @@
+import { Router } from '@angular/router';
+import { UnidadeService } from './../../services/unidade.service';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -9,9 +11,24 @@ export class ViewUnidadesComponent implements OnInit {
 
   nome = 'Professora Conceição';
 
-  constructor() { }
+  constructor(private unidadeService: UnidadeService, private router: Router) { }
 
   ngOnInit() {
+  }
+
+  cancelar() {
+    this.unidadeService.getUnidades();
+    this.router.navigate(['/unidades']);
+  }
+
+  inativar() {
+    console.log('Inativando');
+    // mudar status da unidade em questão.
+  }
+
+  editar() {
+    console.log('Editando');
+    // atualizar os dados da unidade em questão.
   }
 
 }

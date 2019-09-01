@@ -87,6 +87,14 @@
       "alunos": 0,
       "profissionais": 0,
       "id": 10
+    },
+    {
+      "nome": "Aura Escola",
+      "isAtiva": true,
+      "turmas": 0,
+      "alunos": 0,
+      "profissionais": 0,
+      "id": 11
     }
   ],
   "turmas": [
