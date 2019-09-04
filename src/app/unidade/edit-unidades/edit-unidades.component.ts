@@ -1,4 +1,4 @@
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { UnidadeService } from './../../services/unidade.service';
 import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
 import { Unidade } from './../../models/unidade.models';
@@ -12,15 +12,15 @@ import { first } from 'rxjs/operators';
 })
 export class EditUnidadesComponent implements OnInit {
 
-
-  unidade: Unidade;
   form: FormGroup;
 
   constructor(private unidadeService: UnidadeService,
-    private formBuilder: FormBuilder,
-    private router: Router) { }
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
   ngOnInit() {
+
     /* const unidadeId = localStorage.getItem('editUnidadeId');
 
     if (!unidadeId) {
@@ -50,7 +50,46 @@ export class EditUnidadesComponent implements OnInit {
      --------------------------------------
 } */
 
-/* onSubmit() {
+createForm(unidade: Unidade) {
+  this.form = this.fb.group({
+    /* nome: [null, [Validators.required, Validators.minLength(3)]],
+    ativa: true,
+    turmas: 0,
+    alunos: 0,
+    profissionais: 0 */
+
+    nome: [unidade.nome, [Validators.required, Validators.minLength(3)]],
+    endereco: this.fb.group({
+      cep: [unidade.endereco.cep],
+      numero: [unidade.endereco.numero],
+      complemento: [unidade.endereco.complemento],
+      logradouro: [unidade.endereco.logradouro],
+      bairro: [unidade.endereco.bairro],
+      cidade: [unidade.endereco.cidade],
+      estado: [unidade.endereco.estado]
+    }),
+    contato: this.fb.group({
+      telefone: [unidade.contato.telefone],
+      email: [unidade.contato.email]
+    }),
+    turmas: [0],
+    profissionais: [0],
+    alunos: [0],
+    ativa: [true]
+  });
+}
+
+
+//IMPLEMENTANDO AINDA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+getUnidadeId(id: number){
+   this.unidadeService.getUnidadeById(id)
+   .subscribe(dados => {
+
+   });
+}
+
+
+ onSubmit() {
   this.updateUnidade();
 }
 
@@ -62,7 +101,7 @@ updateUnidade() {
     error => {
       alert(error);
     });
-} */
+}
 
 //Troca a cor do botão quando o input está válido
 validaStyleButtonSalvar() {

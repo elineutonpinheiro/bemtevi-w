@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { ViewUnidadesComponent } from './unidade/view-unidades/view-unidades.component';
 import { EditUnidadesComponent } from './unidade/edit-unidades/edit-unidades.component';
 import { ListResponsaveisComponent } from './responsavel/list-responsaveis/list-responsaveis.component';
@@ -10,8 +11,9 @@ import { Routes, RouterModule } from '@angular/router';
 import { ListAlunosComponent } from './aluno/list-alunos/list-alunos.component';
 
 const routes: Routes = [
-  {path: '', pathMatch: 'full', redirectTo: 'home'},
+  {path: '', component: HomeComponent},
   {path: 'unidades', component: ListUnidadesComponent},
+  {path: 'view-unidades/:id', component: ViewUnidadesComponent},
   {path: 'turmas', component: ListTurmasComponent},
   {path: 'profissionais', component: ListProfissionaisComponent},
   {path: 'responsaveis', component: ListResponsaveisComponent},
@@ -19,7 +21,6 @@ const routes: Routes = [
   {path: 'add-unidade', component: AddUnidadesComponent},
   {path: 'edit-unidade', component: EditUnidadesComponent},
   {path: 'view-unidade', component: ViewUnidadesComponent}
-
 
 ];
 

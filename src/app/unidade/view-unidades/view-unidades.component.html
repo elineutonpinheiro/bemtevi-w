@@ -13,22 +13,22 @@
     <mat-grid-list cols="1" rowHeight="30px">
       <mat-grid-tile>
         <div style="position: absolute; left: 10px;">
-          <label style="font-weight: bold">Nome: </label><label>Professora Conceição</label>
+          <label style="font-weight: bold">Nome: </label><label>{{unidade.nome}}</label>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div style="position: absolute; left: 10px;">
-          <label style="font-weight: bold">Endereço: </label><label>Rua Euclides Gomes da Silva, 127 - Alvorada</label>
+          <label style="font-weight: bold">Endereço: </label><label>{{unidade.endereco.logradouro}}, {{unidade.endereco.numero}} - {{unidade.endereco.bairro}}</label>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div style="position: absolute; left: 10px;">
-          <label style="font-weight: bold">Telefone: </label><label>(95) 3623-5294</label>
+          <label style="font-weight: bold">Telefone: </label><label>{{unidade.contato.telefone}}</label>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div style="position: absolute; left: 10px;">
-          <label style="font-weight: bold">E-mail: </label><label>profconceicao@edu.gov.br</label>
+          <label style="font-weight: bold">E-mail: </label><label>{{unidade.contato.email}}</label>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
@@ -38,7 +38,7 @@
     <div>
       <button mat-flat-button color="primary" class="buttonView" (click)="editar()" [routerLink]="['/edit-unidade']"
         style="width: 100px;">Editar</button>
-      <button mat-flat-button color="primary" class="buttonView" (click)="cancelar()" [routerLink]="['/edit-unidade']"
+      <button mat-flat-button color="primary" class="buttonView" (click)="cancelar()"
         style="background: white; border: 1px solid #3f51b5; color: #3f51b5; margin-left: 10px;
       width: 100px;">Cancelar</button>
 

@@ -58,7 +58,7 @@
         <ng-container matColumnDef="status">
           <th mat-header-cell *matHeaderCellDef class="title-column"> Status </th>
           <td mat-cell *matCellDef="let element">
-            <span [ngSwitch]="element.isAtiva">
+            <span [ngSwitch]="element.ativa">
               <mat-chip *ngSwitchCase="true"
                 style="width:20px; color:white; background: #3f51b5; border-radius: 2px; padding: 5px">
                 Ativa
@@ -75,8 +75,7 @@
         <ng-container matColumnDef="acoes">
           <th mat-header-cell *matHeaderCellDef class="title-column"> Ações </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-stroked-button color="primary" class="buttonView"
-            [routerLink]="['/view-unidade']">Visualizar</button>
+            <button mat-stroked-button color="primary" class="buttonView" routerLink="/view-unidades/{{element.id}}">Visualizar</button>
             <!-- <button mat-stroked-button color="primary" aria-label="Example icon-button with a edit icon"
               class="icon-action" id="icon-action-edit" (click)="editUnidade(element)">
               Editar

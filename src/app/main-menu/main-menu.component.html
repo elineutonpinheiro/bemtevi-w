@@ -7,27 +7,27 @@
       </div>
     </mat-toolbar>
     <mat-nav-list>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="" (click)="homePage()">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="">
         <mat-icon aria-label="escola" style="padding-right: 5px">home</mat-icon>
         Home
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/unidades" (click)="otherPage()">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/unidades">
         <mat-icon aria-label="escola" style="padding-right: 5px">business</mat-icon>
         Unidades
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/turmas" (click)="otherPage()">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/turmas">
         <mat-icon aria-label="escola" style="padding-right: 5px">class</mat-icon>
         Turmas
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/profissionais" (click)="otherPage()">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/profissionais">
         <mat-icon aria-label="escola" style="padding-right: 5px">school</mat-icon>
         Profissionais
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/alunos" (click)="otherPage()">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/alunos">
         <mat-icon aria-label="escola" style="padding-right: 5px">child_care</mat-icon>
         Alunos
       </a>
-      <a mat-list-item href="#" routerLinkActive="active" routerLink="/responsaveis" (click)="otherPage()">
+      <a mat-list-item href="#" routerLinkActive="active" routerLink="/responsaveis">
         <mat-icon aria-label="escola" style="padding-right: 5px">people</mat-icon>
         Responsáveis
       </a>
@@ -47,9 +47,7 @@
 
     </mat-toolbar>
     <!-- Add Content Here-->
-    <div *ngIf="isHome">
-      <app-home></app-home>
-    </div>
+
     <router-outlet>
       <!-- <div>
         <ng-content #corpo></ng-content>

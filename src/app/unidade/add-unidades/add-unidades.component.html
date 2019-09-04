@@ -31,7 +31,7 @@
             </mat-form-field>
           </div>
         </div>
-        <div class="section-andress" *ngIf="checked">
+        <div class="section-andress" *ngIf="checked" formGroupName="endereco">
           <div style="padding-bottom: 5px; ">
             <span style="font-weight: bold;">Endereço</span>
           </div>
@@ -58,7 +58,7 @@
               <div class="title-field">Complemento</div>
               <div class="input-field">
                 <mat-form-field floatLabel="never" class="input-form-field" id="input-complemento">
-                  <input matInput placeholder="3º AND" formControlName="cep">
+                  <input matInput placeholder="3º AND" formControlName="complemento">
                 </mat-form-field>
               </div>
             </div>
@@ -101,7 +101,7 @@
           </div>
         </div>
 
-        <div class="section-contact" *ngIf="checked">
+        <div class="section-contact" *ngIf="checked" formGroupName="contato">
           <div style="padding-bottom: 5px; ">
             <span style="font-weight: bold;">Contato</span>
           </div>
@@ -120,18 +120,18 @@
               <div class="title-field">Telefone Fixo</div>
               <div class="input-field">
                 <mat-form-field floatLabel="never" class="input-form-field" id="input-tel-fixo">
-                  <input matInput placeholder="(95) 3623-5294" formControlName="tel-fixo">
+                  <input matInput placeholder="(95) 3623-5294" formControlName="telefone">
                 </mat-form-field>
               </div>
             </div>
-            <div class="container-telefone-celular">
+            <!-- <div class="container-telefone-celular">
               <div class="title-field">Celular</div>
               <div class="input-field">
                 <mat-form-field floatLabel="never" class="input-form-field" id="input-celular">
                   <input matInput placeholder="(95) 99111-8293" formControlName="celular">
                 </mat-form-field>
               </div>
-            </div>
+            </div> -->
           </div>
         </div>
 

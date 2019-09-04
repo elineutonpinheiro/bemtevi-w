@@ -15,6 +15,10 @@ export class UnidadeService {
 
   unidades: Unidade[];
 
+  getUnidades(): Observable<any> {
+    return this.http.get(`${this.serviceUrl}`);
+  }
+
   getUnidadeById(id: number): Observable<any> {
     return this.http.get(`${this.serviceUrl}/${id}`);
   }
@@ -27,31 +31,31 @@ export class UnidadeService {
     return this.http.put(`${this.serviceUrl}/${unidade.id}`, unidade);
   }
 
-  deleteUnidade(id: number): Observable<any> {
+  updateUnidade2(id: number, value: any): Observable<any> {
+    return this.http.put(`${this.serviceUrl}/${id}`, value);
+  }
+
+   deleteUnidade(id: number): Observable<any> {
     return this.http.delete(`${this.serviceUrl}/${id}`, { responseType: 'text' });
   }
 
-  getUnidades(): Observable<any[]> {
-    return this.http.get<any[]>(`${this.serviceUrl}`);
-  }
-
-  findUnits(
-    unityId: number, filter = '', sortOrder = 'asc',
-    pageNumber = 0, pageSize = 3): Observable<Unidade[]> {
-
-      return this.http.get(this.serviceUrl, {
-        params: new HttpParams()
-        .set('unityId', unityId.toString())
-        .set('filter', filter)
-        .set('sortOrder', sortOrder)
-        .set('pageNumber', pageNumber.toString())
-        .set('pageSize', pageSize.toString())
-      }).pipe(
-        map(res => res["payload"])
-      );
-    }
-
 }
+
+/* findUnits(
+  unityId: number, filter = '', sortOrder = 'asc',
+  pageNumber = 0, pageSize = 3): Observable<Unidade[]> {
+
+    return this.http.get(this.serviceUrl, {
+      params: new HttpParams()
+      .set('unityId', unityId.toString())
+      .set('filter', filter)
+      .set('sortOrder', sortOrder)
+      .set('pageNumber', pageNumber.toString())
+      .set('pageSize', pageSize.toString())
+    }).pipe(
+      map(res => res["payload"])
+    );
+  } */
 
 
 /*  updateUnidade(id: number, value: any): Observable<any> {

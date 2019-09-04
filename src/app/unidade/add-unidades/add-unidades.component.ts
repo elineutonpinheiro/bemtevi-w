@@ -18,16 +18,16 @@ export class AddUnidadesComponent implements OnInit {
   checked = false;
 
   constructor(private unidadeService: UnidadeService,
-              private formBuilder: FormBuilder,
-              private router: Router) { }
+    private fb: FormBuilder,
+    private router: Router) { }
 
   ngOnInit() {
-    this.createForm();
+    this.createForm(this.unidade);
   }
 
   //Troca a cor do botão quando o input está válido
   validaStyleButtonSalvar() {
-    if(this.form.valid) {
+    if (this.form.valid) {
       return {
         'background': '#3f51b5',
         'color': '#fff',
@@ -37,25 +37,45 @@ export class AddUnidadesComponent implements OnInit {
   }
 
 
-  createForm() {
-    this.form = this.formBuilder.group({
-      nome: [null, [Validators.required, Validators.minLength(3)]],
-      isAtiva: true,
+  createForm(unidade: Unidade) {
+    this.form = this.fb.group({
+      /* nome: [null, [Validators.required, Validators.minLength(3)]],
+      ativa: true,
       turmas: 0,
       alunos: 0,
-      profissionais: 0
+      profissionais: 0 */
+
+      nome: [unidade.nome, [Validators.required, Validators.minLength(3)]],
+      endereco: this.fb.group({
+        cep: [unidade.endereco.cep],
+        numero: [unidade.endereco.numero],
+        complemento: [unidade.endereco.complemento],
+        logradouro: [unidade.endereco.logradouro],
+        bairro: [unidade.endereco.bairro],
+        cidade: [unidade.endereco.cidade],
+        estado: [unidade.endereco.estado]
+      }),
+      contato: this.fb.group({
+        telefone: [unidade.contato.telefone],
+        email: [unidade.contato.email]
+      }),
+      turmas: [0],
+      profissionais: [0],
+      alunos: [0],
+      ativa: [true]
     });
   }
 
   save() {
     this.unidadeService.createUnidade(this.form.value)
       .subscribe(data => console.log(data), error => console.log(error));
-    this.unidade = new Unidade();
+    //this.unidade = new Unidade();
     this.gotoList();
   }
 
   onSubmit() {
     this.save();
+    //console.log(this.form.value);
   }
 
   gotoList() {

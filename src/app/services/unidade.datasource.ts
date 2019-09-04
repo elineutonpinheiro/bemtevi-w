@@ -4,7 +4,7 @@ import { CollectionViewer, DataSource } from '@angular/cdk/collections';
 import { BehaviorSubject, Observable, of } from 'rxjs';
 import { catchError, finalize } from 'rxjs/operators';
 
-export class UnidadeDataSource implements DataSource<Unidade> {
+/* export class UnidadeDataSource implements DataSource<Unidade> {
 
   private unidadesSubject = new BehaviorSubject<Unidade[]>([]);
   private loadingSubject = new BehaviorSubject<boolean>(false);
@@ -36,4 +36,4 @@ export class UnidadeDataSource implements DataSource<Unidade> {
       this.loadingSubject.complete();
     }
 
-}
+} */

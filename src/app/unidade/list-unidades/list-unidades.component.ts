@@ -1,4 +1,3 @@
-import { UnidadeDataSource } from './../../services/unidade.datasource';
 import { Router, ActivatedRoute } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Unidade } from './../../models/unidade.models';
@@ -22,9 +21,11 @@ export class ListUnidadesComponent implements OnInit {
   @ViewChild(MatSort, { static: true }) sort: MatSort;
 
   searchKey: string;
+  unidade: Unidade;
+  idClicado: number;
 
   constructor(private unidadeService: UnidadeService, private router: Router){
-    this.getUnidades()
+    this.getUnidades();
    }
 
   ngOnInit() {
@@ -56,6 +57,25 @@ export class ListUnidadesComponent implements OnInit {
       this.dataSource.data = dados as Unidade[];
     });
   }
+
+  viewUnidade(id: number){
+    this.unidadeService.getUnidadeById(id)
+    .subscribe(
+      dados => {
+        console.log(dados);
+        console.log('Unidade Selecionada com Sucesso!');
+        this.router.navigate(['/unidades/' + id]);
+      },
+      error => console.log(error));
+
+  /* this.unidadeService.getUnidadeById(id)
+    .subscribe( dados => {
+      this.unidade = dados;
+      console.log(this.unidade);
+    }); */
+
+  }
+
 
 
 }
