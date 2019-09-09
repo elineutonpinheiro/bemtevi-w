@@ -19,7 +19,7 @@ export class UnidadeService {
     return this.http.get(`${this.serviceUrl}`);
   }
 
-  getUnidadeById(id: number): Observable<any> {
+  getUnidadeById(id: any): Observable<any> {
     return this.http.get(`${this.serviceUrl}/${id}`);
   }
 

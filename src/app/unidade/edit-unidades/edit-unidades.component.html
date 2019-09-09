@@ -1,39 +1,150 @@
-
-<p style="padding-left: 10px; font-weight: bold">
-  <span>Editar Unidade</span>
-</p>
-
-<mat-divider></mat-divider>
+<div>
+  <div class="cabecalho">
+    Editar Unidade
+  </div>
+  <mat-divider></mat-divider>
+</div>
 
 <section>
   <div class="container">
 
-    <form method="post" (ngSubmit)="onSubmit()" [formGroup]="form">
+    <!-- <div class="plus-field">
+      <div class="label-form-completed">
+        <label>Selecione para realizar o cadastro completo de Unidade</label>
+      </div>
+      <div class="chekebox">
+        <mat-checkbox></mat-checkbox>
+      </div>
+    </div> -->
 
+    <form method="post" (ngSubmit)="updateUnidade(form.value)" [formGroup]="form">
       <div class="container-field">
-        <div style="padding-bottom: 5px">
-            <span style="font-weight: bold">Unidade</span>
+        <div class="section-name">
+          <div style="padding-bottom: 5px; ">
+            <span style="font-weight: bold;">Unidade</span>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="title-field">Nome</div>
+          <div class="input-field">
+            <mat-form-field floatLabel="never" class="input-form-field" id="input-name">
+              <input matInput placeholder="Ex.: Escolinha Feliz" formControlName="nome">
+            </mat-form-field>
+          </div>
         </div>
-        <div class="div-input">
-          <mat-form-field floatLabel="never" class="input-form-field">
-            <input matInput placeholder="Ex.: Escolinha Feliz" class="input-field" formControlName="nome">
-          </mat-form-field>
-        </div>
-        <div style="margin-top: 10px">
-          <div style="padding-bottom: 5px">
-            <span style="font-weight: bold">Mudar status da Unidade para: </span>
+        <div class="section-andress" formGroupName="endereco">
+          <div style="padding-bottom: 5px; ">
+            <span style="font-weight: bold;">Endereço</span>
+          </div>
+          <mat-divider></mat-divider>
+
+          <div class="container-andress-1">
+            <div class="container-cep">
+              <div class="title-field">CEP</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-cep">
+                  <input matInput placeholder="69.317-234" formControlName="cep">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="container-numero">
+              <div class="title-field">Número</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-numero">
+                  <input matInput placeholder="1024" formControlName="numero">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="container-complemento">
+              <div class="title-field">Complemento</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-complemento">
+                  <input matInput placeholder="3º AND" formControlName="complemento">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
+
+          <div class="container-logradouro">
+              <div class="title-field">Logradouro</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-logradouro">
+                  <input matInput placeholder="Rua José Martins Gonçalves" formControlName="logradouro">
+                </mat-form-field>
+              </div>
+          </div>
+
+          <div class="container-andress-2">
+            <div class="container-bairro">
+              <div class="title-field">Bairro</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-bairro">
+                  <input matInput placeholder="Alta Floresta" formControlName="bairro">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="container-cidade">
+              <div class="title-field">Cidade</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-cidade">
+                  <input matInput placeholder="Cuiabá" formControlName="cidade">
+                </mat-form-field>
+              </div>
+            </div>
+            <div class="container-estado">
+              <div class="title-field">Estado</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-estado">
+                  <input matInput placeholder="MT" formControlName="estado">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
         </div>
 
-          <mat-checkbox>Ativa/Inativa</mat-checkbox>
+        <div class="section-contact" formGroupName="contato">
+          <div style="padding-bottom: 5px; ">
+            <span style="font-weight: bold;">Contato</span>
+          </div>
+          <mat-divider></mat-divider>
+          <div class="container-email">
+            <div class="title-field">E-mail</div>
+            <div class="input-field">
+              <mat-form-field floatLabel="never" class="input-form-field" id="input-email">
+                <input matInput placeholder="seuemail@gmail.com" formControlName="email">
+              </mat-form-field>
+            </div>
+          </div>
+
+          <div class="container-tipo-telefone">
+            <div class="container-telefone-fixo">
+              <div class="title-field">Telefone Fixo</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-tel-fixo">
+                  <input matInput placeholder="(95) 3623-5294" formControlName="telefone">
+                </mat-form-field>
+              </div>
+            </div>
+            <!-- <div class="container-telefone-celular">
+              <div class="title-field">Celular</div>
+              <div class="input-field">
+                <mat-form-field floatLabel="never" class="input-form-field" id="input-celular">
+                  <input matInput placeholder="(95) 99111-8293" formControlName="celular">
+                </mat-form-field>
+              </div>
+            </div> -->
+          </div>
         </div>
-        <div style="margin-top: 60px">
-          <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid" [ngStyle]="validaStyleButtonSalvar()" class="button-form" id="button-salvar">Salvar</button>
-          <button mat-flat-button color="primary" (click)="cancelar()" class="button-form" id="button-cancelar">Cancelar</button>
+
+        <div class="section-actions">
+          <button mat-flat-button color="primary" type="submit" [disabled]="form.invalid"
+            [ngStyle]="validaStyleButtonSalvar()" class="button-form" id="button-salvar">Salvar</button>
+          <button mat-flat-button color="primary" (click)="cancelar()" class="button-form"
+            id="button-cancelar">Cancelar</button>
         </div>
       </div>
 
     </form>
 
   </div>
-
 </section>
+

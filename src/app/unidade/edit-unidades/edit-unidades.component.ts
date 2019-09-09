@@ -1,6 +1,6 @@
 import { Router, ActivatedRoute } from '@angular/router';
 import { UnidadeService } from './../../services/unidade.service';
-import { FormGroup, FormBuilder, Validators, FormControl } from '@angular/forms';
+import { FormGroup, FormBuilder, Validators, FormControl, NgForm } from '@angular/forms';
 import { Unidade } from './../../models/unidade.models';
 import { Component, OnInit } from '@angular/core';
 import { first } from 'rxjs/operators';
@@ -12,95 +12,92 @@ import { first } from 'rxjs/operators';
 })
 export class EditUnidadesComponent implements OnInit {
 
+  checked = false;
   form: FormGroup;
 
-  constructor(private unidadeService: UnidadeService,
-    private fb: FormBuilder,
-    private router: Router,
-    private route: ActivatedRoute) { }
+  _id: null;
+  nome: '';
+  endereco: {
+    logradouro: '',
+    numero: '',
+    complemento: '',
+    cep: '',
+    bairro: '',
+    cidade: '',
+    estado: ''
+  };
+  contato: {
+    telefone: '',
+    email: ''
+  };
+  turmas: null;
+  profissionais: null;
+  alunos: null;
+  ativa: true;
 
-  ngOnInit() {
+constructor(private unidadeService: UnidadeService,
+  private fb: FormBuilder,
+  private router: Router,
+  private route: ActivatedRoute) { }
 
-    /* const unidadeId = localStorage.getItem('editUnidadeId');
+ngOnInit() {
+  this.getUnidade(this.route.snapshot.params.id);
+  this.createForm();
+}
 
-    if (!unidadeId) {
-     alert('Ação Inválida.');
-     this.router.navigate(['unidades']);
-     return; */
-  }
-  /* this.createForm();
-  this.unidadeService.getUnidadeById(+unidadeId).subscribe(dados => {
-  this.form.setValue(dados);
- }); */
-/* } */
-
-/* createForm() {
-  this.form = this.formBuilder.group({
-    id: [],
-    nome: [null, [Validators.required, Validators.minLength(3)]],
-    isAtiva: []
-  });
-
-   --------------------------------------
-     Não entendi o porquê de ser necessário
-     estar todos os campos no form
-
-     Quando atualiza, o elemento vai para
-     baixo na listagem
-     --------------------------------------
-} */
-
-createForm(unidade: Unidade) {
+ createForm() {
   this.form = this.fb.group({
-    /* nome: [null, [Validators.required, Validators.minLength(3)]],
-    ativa: true,
-    turmas: 0,
-    alunos: 0,
-    profissionais: 0 */
-
-    nome: [unidade.nome, [Validators.required, Validators.minLength(3)]],
+    nome: ['', [Validators.required, Validators.minLength(3)]],
     endereco: this.fb.group({
-      cep: [unidade.endereco.cep],
-      numero: [unidade.endereco.numero],
-      complemento: [unidade.endereco.complemento],
-      logradouro: [unidade.endereco.logradouro],
-      bairro: [unidade.endereco.bairro],
-      cidade: [unidade.endereco.cidade],
-      estado: [unidade.endereco.estado]
+      cep: [''],
+      numero: [''],
+      complemento: [''],
+      logradouro: [''],
+      bairro: [''],
+      cidade: [''],
+      estado: ['']
     }),
     contato: this.fb.group({
-      telefone: [unidade.contato.telefone],
-      email: [unidade.contato.email]
-    }),
-    turmas: [0],
-    profissionais: [0],
-    alunos: [0],
-    ativa: [true]
+      telefone: [''],
+      email: ['']
+    })
   });
+
 }
 
 
-//IMPLEMENTANDO AINDA !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-getUnidadeId(id: number){
-   this.unidadeService.getUnidadeById(id)
-   .subscribe(dados => {
-
-   });
-}
-
-
- onSubmit() {
-  this.updateUnidade();
-}
-
-updateUnidade() {
-  this.unidadeService.updateUnidade(this.form.value).pipe(first()).subscribe(
-    dados => {
-      this.router.navigate(['unidades']);
-    },
-    error => {
-      alert(error);
+getUnidade(id: number) {
+  this.unidadeService.getUnidadeById(id).subscribe(dados => {
+    this._id = dados.id;
+    this.form.setValue({
+      nome: dados.nome,
+      endereco: {
+        cep: dados.endereco.cep,
+        numero: dados.endereco.numero,
+        complemento: dados.endereco.complemento,
+        logradouro: dados.endereco.logradouro,
+        bairro: dados.endereco.bairro,
+        cidade: dados.endereco.cidade,
+        estado: dados.endereco.estado
+      },
+      contato: {
+        telefone: dados.contato.telefone,
+        email: dados.contato.email
+      }
     });
+  });
+
+}
+
+updateUnidade(form: NgForm) {
+
+  //Não ta pegando o ID, fica indefinido
+  this.unidadeService.updateUnidade2(this._id, form).subscribe(dados => {
+      this.router.navigate(['/view-unidades', dados.id]);
+    }, error => {
+      console.log(error);
+    });
+
 }
 
 //Troca a cor do botão quando o input está válido

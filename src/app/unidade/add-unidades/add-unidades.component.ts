@@ -39,30 +39,31 @@ export class AddUnidadesComponent implements OnInit {
 
   createForm(unidade: Unidade) {
     this.form = this.fb.group({
+      nome: [null, [Validators.required, Validators.minLength(3)]],
+      endereco: this.fb.group({
+        cep: [null],
+        numero: [null],
+        complemento: [null],
+        logradouro: [null],
+        bairro: [null],
+        cidade: [null],
+        estado: [null]
+      }),
+      contato: this.fb.group({
+        telefone: [null],
+        email: [null]
+      }),
+      turmas: [0],
+      profissionais: [0],
+      alunos: [0],
+      ativa: [true]
+
       /* nome: [null, [Validators.required, Validators.minLength(3)]],
       ativa: true,
       turmas: 0,
       alunos: 0,
       profissionais: 0 */
 
-      nome: [unidade.nome, [Validators.required, Validators.minLength(3)]],
-      endereco: this.fb.group({
-        cep: [unidade.endereco.cep],
-        numero: [unidade.endereco.numero],
-        complemento: [unidade.endereco.complemento],
-        logradouro: [unidade.endereco.logradouro],
-        bairro: [unidade.endereco.bairro],
-        cidade: [unidade.endereco.cidade],
-        estado: [unidade.endereco.estado]
-      }),
-      contato: this.fb.group({
-        telefone: [unidade.contato.telefone],
-        email: [unidade.contato.email]
-      }),
-      turmas: [0],
-      profissionais: [0],
-      alunos: [0],
-      ativa: [true]
     });
   }
 

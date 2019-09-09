@@ -10,7 +10,6 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewUnidadesComponent implements OnInit {
 
-  nome = 'Professora Conceição';
   unidade: Unidade = {id: null, nome: '',
                       endereco : {logradouro: '', numero: '', complemento: '', cep: '',
                       bairro: '', cidade: '', estado: ''},
@@ -23,11 +22,7 @@ export class ViewUnidadesComponent implements OnInit {
               private route: ActivatedRoute) { }
 
   ngOnInit() {
-    this.getUnidade(this.route.snapshot.params['id']);
-    /* const unidadeId = localStorage.getItem('viewUnidadeId');
-    this.unidadeService.getUnidadeById(+unidadeId).subscribe(dados => {
-      this.unidade = dados;
-     }); */
+    this.getUnidade(this.route.snapshot.params.id);
   }
 
   cancelar() {

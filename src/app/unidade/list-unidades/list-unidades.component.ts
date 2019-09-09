@@ -58,23 +58,23 @@ export class ListUnidadesComponent implements OnInit {
     });
   }
 
-  viewUnidade(id: number){
+  /* viewUnidade(id: number){
     this.unidadeService.getUnidadeById(id)
     .subscribe(
       dados => {
         console.log(dados);
         console.log('Unidade Selecionada com Sucesso!');
-        this.router.navigate(['/unidades/' + id]);
+        //this.router.navigate(['/unidades/' + id]);
       },
       error => console.log(error));
 
-  /* this.unidadeService.getUnidadeById(id)
+  this.unidadeService.getUnidadeById(id)
     .subscribe( dados => {
       this.unidade = dados;
       console.log(this.unidade);
-    }); */
+    });
 
-  }
+  } */
 
 
 

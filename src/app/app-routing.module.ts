@@ -14,6 +14,7 @@ const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'unidades', component: ListUnidadesComponent},
   {path: 'view-unidades/:id', component: ViewUnidadesComponent},
+  {path: 'edit-unidades/:id', component: EditUnidadesComponent},
   {path: 'turmas', component: ListTurmasComponent},
   {path: 'profissionais', component: ListProfissionaisComponent},
   {path: 'responsaveis', component: ListResponsaveisComponent},
