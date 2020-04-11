@@ -14,7 +14,7 @@ import { tap } from 'rxjs/operators';
   styleUrls: ['./list-unidades.component.css']
 })
 export class ListUnidadesComponent implements OnInit {
-  displayedColumns: string[] = ['nome', 'turmas', 'alunos', 'profissionais', 'status', 'acoes'];
+  displayedColumns: string[] = ['nome', 'endereco', 'cidade', 'telefone', 'email', 'status', 'acoes'];
   dataSource = new MatTableDataSource<Unidade>();
 
   @ViewChild(MatPaginator, { static: false }) paginator: MatPaginator;
@@ -25,7 +25,6 @@ export class ListUnidadesComponent implements OnInit {
   idClicado: number;
 
   constructor(private unidadeService: UnidadeService, private router: Router){
-    this.getUnidades();
    }
 
   ngOnInit() {
@@ -51,10 +50,11 @@ export class ListUnidadesComponent implements OnInit {
     this.applyFilter(this.searchKey);
   }
 
-  getUnidades = () => {
-    this.unidadeService.getUnidades()
+  getUnidades() {
+    this.unidadeService.listarUnidadesPorInstituicaoId(1)
     .subscribe(dados => {
-      this.dataSource.data = dados as Unidade[];
+      this.dataSource.data = dados;
+      console.log(dados);
     });
   }
 

@@ -10,12 +10,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ViewUnidadesComponent implements OnInit {
 
-  unidade: Unidade = {id: null, nome: '',
-                      endereco : {logradouro: '', numero: '', complemento: '', cep: '',
-                      bairro: '', cidade: '', estado: ''},
-                      contato: {telefone: '', email: ''},
-                      turmas: null, profissionais: null, alunos: null,
-                      ativa: null};
+  unidade: Unidade;
 
   constructor(private unidadeService: UnidadeService,
               private router: Router,
@@ -26,15 +21,18 @@ export class ViewUnidadesComponent implements OnInit {
   }
 
   cancelar() {
+    console.log('Cancelando');
     this.router.navigate(['/unidades']);
   }
 
   inativar() {
     console.log('Inativando');
+    this.unidade.ativa = false;
     // mudar status da unidade em questão.
   }
 
   editar() {
+    this.router.navigate(['/edit-unidades', this.unidade.id]);
     console.log('Editando');
     // atualizar os dados da unidade em questão.
   }

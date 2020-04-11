@@ -1,3 +1,4 @@
+import { Lotacao } from '../models/lotacao.models';
 import { Profissional } from '../models/Profissional.models';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -6,19 +7,15 @@ import { HttpClient } from '@angular/common/http';
 @Injectable({
   providedIn: 'root'
 })
-export class ProfissionalService {
+export class LotacaoService {
 
   private baseUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) {
   }
 
-  inserir(profissional: Profissional): Observable<any> {
-    return this.http.post(`${this.baseUrl}/profissionais`, profissional);
-  }
-
-  listar(): Observable<Profissional> {
-    return this.http.get<Profissional>(`${this.baseUrl}/profissionais`);
+  inserir(lotacao: Lotacao): Observable<any> {
+    return this.http.post(`${this.baseUrl}/lotacoes`, lotacao);
   }
 
 }

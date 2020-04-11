@@ -1,0 +1,21 @@
+{
+  "unidades": [
+    {
+      "nome": "xcxcxc",
+      "endereco": {
+        "cep": null,
+        "numero": null,
+        "complemento": null,
+        "logradouro": null,
+        "bairro": null,
+        "cidade": null,
+        "estado": null
+      },
+      "contato": {
+        "telefone": null,
+        "email": "1111"
+      },
+      "id": 1
+    }
+  ]
+}

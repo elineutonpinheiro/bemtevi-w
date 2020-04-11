@@ -1,6 +1,7 @@
+import { AddProfissionaisComponent } from './profissional/add-profissionais/add-profissionais.component';
+import { ProfissionalService } from './services/profissional.service';
 import { TurmaService } from './services/turma.service';
 import { ResponsavelService } from './services/responsavel.service';
-import { ProfissionalService } from './services/profissional.service';
 import { UnidadeService } from './services/unidade.service';
 import { AlunoService } from './services/aluno.service';
 
@@ -23,7 +24,6 @@ import { HomeComponent } from './home/home.component';
 import { AddTurmasComponent } from './turma/add-turmas/add-turmas.component';
 import { EditTurmasComponent } from './turma/edit-turmas/edit-turmas.component';
 import { ListTurmasComponent } from './turma/list-turmas/list-turmas.component';
-import { AddProfissionaisComponent } from './profissional/add-profissionais/add-profissionais.component';
 import { EditProfissionaisComponent } from './profissional/edit-profissionais/edit-profissionais.component';
 import { ListProfissionaisComponent } from './profissional/list-profissionais/list-profissionais.component';
 import { AddResponsaveisComponent } from './responsavel/add-responsaveis/add-responsaveis.component';
@@ -37,6 +37,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { RodapeComponent } from './rodape/rodape.component';
 import { UserMenuComponent } from './user-menu/user-menu.component';
 import { ViewUnidadesComponent } from './unidade/view-unidades/view-unidades.component';
+import { AngularFireModule} from '@angular/fire';
+import { environment } from 'src/environments/environment';
+import { AngularFireAuthModule } from '@angular/fire/auth';
 
 @NgModule({
   declarations: [
@@ -72,7 +75,9 @@ import { ViewUnidadesComponent } from './unidade/view-unidades/view-unidades.com
     ReactiveFormsModule,
     LayoutModule,
     MaterialModule,
-    HttpClientModule
+    HttpClientModule,
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireAuthModule
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: myMatPaginatorIntl() },

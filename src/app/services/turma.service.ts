@@ -8,12 +8,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TurmaService {
 
-  /* private serviceUrl = 'http://localhost:4200/api/turmas';
+  private baseUrl = 'http://localhost:8080';
 
   constructor(private http: HttpClient) { }
 
-  getResponsaveis(): Observable<Turma[]> {
-    return this.http.get<Turma[]>(`${this.serviceUrl}`);
-  } */
+  buscarTurmas(unidadeId: string): Observable<Turma[]> {
+    return this.http.get<Turma[]>(`${this.baseUrl}/unidades/${unidadeId}/turmas`);
+  }
 
 }

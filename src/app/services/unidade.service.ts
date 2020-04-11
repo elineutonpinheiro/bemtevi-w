@@ -11,32 +11,48 @@ export class UnidadeService {
 
   private serviceUrl = 'http://localhost:3000/unidades';
 
+  private baseUrl = 'http://localhost:8080';
+
   constructor(private http: HttpClient) { }
 
   unidades: Unidade[];
 
-  getUnidades(): Observable<any> {
-    return this.http.get(`${this.serviceUrl}`);
+  buscarUnidades(): Observable<Unidade[]> {
+    return this.http.get<Unidade[]>(`${this.baseUrl}/unidades`);
+  }
+
+  getUnidades(): Observable<Unidade[]> {
+    return this.http.get<Unidade[]>(`${this.baseUrl}/unidades`);
   }
 
   getUnidadeById(id: any): Observable<any> {
-    return this.http.get(`${this.serviceUrl}/${id}`);
+    return this.http.get(`${this.baseUrl}/unidades/${id}`);
+  }
+
+  /* updateUnidade(id: number, value: any): Observable<any> {
+    return this.http.put(`${this.baseUrl}/unidades/${id}`, value);
+  } */
+
+  updateUnidade(unidade: Unidade, id: number): Observable<any> {
+    return this.http.put(`${this.baseUrl}/unidades/${id}`, unidade);
   }
 
   createUnidade(unidade: any): Observable<any> {
-    return this.http.post(`${this.serviceUrl}`, unidade);
+    return this.http.post(`${this.baseUrl}/unidades/`, unidade);
   }
 
-  updateUnidade(unidade: any): Observable<any> {
+  /* updateUnidade(unidade: any): Observable<any> {
     return this.http.put(`${this.serviceUrl}/${unidade.id}`, unidade);
-  }
+  } */
 
-  updateUnidade2(id: number, value: any): Observable<any> {
-    return this.http.put(`${this.serviceUrl}/${id}`, value);
-  }
 
-   deleteUnidade(id: number): Observable<any> {
+  deleteUnidade(id: number): Observable<any> {
     return this.http.delete(`${this.serviceUrl}/${id}`, { responseType: 'text' });
+  }
+
+
+  listarUnidadesPorInstituicaoId(id: any): Observable<Unidade[]> {
+    return this.http.get<Unidade[]>(`${this.baseUrl}/instituicoes/${id}/unidades`);
   }
 
 }

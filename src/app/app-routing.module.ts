@@ -1,3 +1,5 @@
+import { AddProfissionaisComponent } from './profissional/add-profissionais/add-profissionais.component';
+import { AddTurmasComponent } from './turma/add-turmas/add-turmas.component';
 import { HomeComponent } from './home/home.component';
 import { ViewUnidadesComponent } from './unidade/view-unidades/view-unidades.component';
 import { EditUnidadesComponent } from './unidade/edit-unidades/edit-unidades.component';
@@ -16,7 +18,9 @@ const routes: Routes = [
   {path: 'view-unidades/:id', component: ViewUnidadesComponent},
   {path: 'edit-unidades/:id', component: EditUnidadesComponent},
   {path: 'turmas', component: ListTurmasComponent},
+  {path: 'add-turmas', component: AddTurmasComponent},
   {path: 'profissionais', component: ListProfissionaisComponent},
+  {path: 'add-profissionais', component: AddProfissionaisComponent},
   {path: 'responsaveis', component: ListResponsaveisComponent},
   {path: 'alunos', component: ListAlunosComponent},
   {path: 'add-unidade', component: AddUnidadesComponent},

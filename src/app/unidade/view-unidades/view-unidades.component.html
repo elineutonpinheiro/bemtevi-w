@@ -3,32 +3,33 @@
   <div class="details-container" style="background: white; border-radius: 2px; padding: 30px; height: 435px;">
 
     <div class="title-container">
-      <!-- <div class="simbol-icon">
-        PC
-      </div> -->
-      <div class="simbol-title" style="font-weight: bold; font-size: 20px;">{{unidade.nome | titlecase}}</div>
+      <div class="simbol-title" style="font-weight: bold; font-size: 20px;" *ngIf="unidade">{{unidade.nome | titlecase}}</div>
     </div>
     <mat-divider style="margin-top: 8px; margin-bottom: 30px;"></mat-divider>
 
     <mat-grid-list cols="1" rowHeight="30px">
       <mat-grid-tile>
         <div style="position: absolute; left: 10px;">
-          <label style="font-weight: bold">Id: </label><label>{{unidade.id}}</label>
+          <label style="font-weight: bold">Endereço: </label>
+          <label *ngIf="unidade">{{unidade.endereco.logradouro}}, {{unidade.endereco.numero}} - {{unidade.endereco.bairro}}</label>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div style="position: absolute; left: 10px;">
-          <label style="font-weight: bold">Endereço: </label><label>{{unidade.endereco.logradouro}}, {{unidade.endereco.numero}} - {{unidade.endereco.bairro}}</label>
+          <label style="font-weight: bold">Cidade: </label>
+          <label *ngIf="unidade">{{unidade.endereco.cidade}} / {{unidade.endereco.estado}}</label>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div style="position: absolute; left: 10px;">
-          <label style="font-weight: bold">Telefone: </label><label>{{unidade.contato.telefone}}</label>
+          <label style="font-weight: bold">Telefone: </label>
+          <label *ngIf="unidade">{{unidade.telefone}}</label>
         </div>
       </mat-grid-tile>
       <mat-grid-tile>
         <div style="position: absolute; left: 10px;">
-          <label style="font-weight: bold">E-mail: </label><label>{{unidade.contato.email}}</label>
+          <label style="font-weight: bold">E-mail: </label>
+          <label *ngIf="unidade">{{unidade.email}}</label>
         </div>
       </mat-grid-tile>
     </mat-grid-list>
@@ -36,7 +37,7 @@
     <mat-divider style="margin-top: 40px; margin-bottom: 8px;"></mat-divider>
 
     <div>
-      <button mat-flat-button color="primary" class="buttonView" [routerLink]="['/edit-unidades', unidade.id]"
+      <button mat-flat-button color="primary" class="buttonView" (click)="editar()"
         style="width: 100px;">Editar</button>
       <button mat-flat-button color="primary" class="buttonView" (click)="cancelar()"
         style="background: white; border: 1px solid #3f51b5; color: #3f51b5; margin-left: 10px;

@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
 export class AddUnidadesComponent implements OnInit {
 
   form: FormGroup;
-  unidade: Unidade = new Unidade();
+  unidade: Unidade;
   submitted = false;
   checked = false;
 

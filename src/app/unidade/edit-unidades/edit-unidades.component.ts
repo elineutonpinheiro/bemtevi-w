@@ -16,6 +16,7 @@ export class EditUnidadesComponent implements OnInit {
   form: FormGroup;
 
   _id: null;
+  /*
   nome: '';
   endereco: {
     logradouro: '',
@@ -26,94 +27,111 @@ export class EditUnidadesComponent implements OnInit {
     cidade: '',
     estado: ''
   };
-  contato: {
-    telefone: '',
-    email: ''
-  };
-  turmas: null;
-  profissionais: null;
-  alunos: null;
+  telefone: '';
+  email: '';
   ativa: true;
+  instituicaoId: null; */
 
-constructor(private unidadeService: UnidadeService,
-  private fb: FormBuilder,
-  private router: Router,
-  private route: ActivatedRoute) { }
+  unidade: Unidade;
 
-ngOnInit() {
-  this.getUnidade(this.route.snapshot.params.id);
-  this.createForm();
-}
+  constructor(private unidadeService: UnidadeService,
+    private fb: FormBuilder,
+    private router: Router,
+    private route: ActivatedRoute) { }
 
- createForm() {
-  this.form = this.fb.group({
-    nome: ['', [Validators.required, Validators.minLength(3)]],
-    endereco: this.fb.group({
-      cep: [''],
-      numero: [''],
-      complemento: [''],
-      logradouro: [''],
-      bairro: [''],
-      cidade: [''],
-      estado: ['']
-    }),
-    contato: this.fb.group({
+  ngOnInit() {
+    this.getUnidade(this.route.snapshot.params.id);
+    this.createForm();
+  }
+
+  createForm() {
+    this.form = this.fb.group({
+      id: [null],
+      nome: ['', [Validators.required, Validators.minLength(3)]],
+      endereco: this.fb.group({
+        logradouro: [''],
+        numero: [''],
+        complemento: [''],
+        bairro: [''],
+        cidade: [''],
+        estado: [''],
+        cep: ['']
+      }),
       telefone: [''],
-      email: ['']
-    })
-  });
-
-}
-
-
-getUnidade(id: number) {
-  this.unidadeService.getUnidadeById(id).subscribe(dados => {
-    this._id = dados.id;
-    this.form.setValue({
-      nome: dados.nome,
-      endereco: {
-        cep: dados.endereco.cep,
-        numero: dados.endereco.numero,
-        complemento: dados.endereco.complemento,
-        logradouro: dados.endereco.logradouro,
-        bairro: dados.endereco.bairro,
-        cidade: dados.endereco.cidade,
-        estado: dados.endereco.estado
-      },
-      contato: {
-        telefone: dados.contato.telefone,
-        email: dados.contato.email
-      }
+      email: [''],
+      ativa: [true],
+      instituicaoId: [null]
     });
-  });
 
-}
+  }
 
-updateUnidade(form: NgForm) {
 
-  //Não ta pegando o ID, fica indefinido
-  this.unidadeService.updateUnidade2(this._id, form).subscribe(dados => {
+  getUnidade(id: number) {
+    this.unidadeService.getUnidadeById(id).subscribe(dados => {
+      this.unidade = dados;
+      console.log('Avaliação: ' + this.unidade);
+      this._id = dados.id;
+      this.form.setValue({
+        id: dados.id,
+        nome: dados.nome,
+        endereco: {
+          logradouro: dados.endereco.logradouro,
+          numero: dados.endereco.numero,
+          complemento: dados.endereco.complemento,
+          bairro: dados.endereco.bairro,
+          cidade: dados.endereco.cidade,
+          estado: dados.endereco.estado,
+          cep: dados.endereco.cep
+        },
+        telefone: dados.telefone,
+        email: dados.email,
+        ativa: dados.ativa,
+        instituicaoId: dados.instituicao.id
+      });
+    });
+
+  }
+
+  updateUnidade() {
+
+
+   /*  this.unidade = new Unidade(this.form.controls.id.value, this.form.controls.nome.value,
+      this.form.controls.endereco.value.logradouro.value, this.form.controls.numero.value,
+      this.form.controls.complemento.value, this.form.controls.cep.value,
+      this.form.controls.bairro.value, this.form.controls.cidade.value,
+      this.form.controls.estado.value, this.form.controls.telefone.value,
+      this.form.controls.email.value, this.form.controls.ativa.value, this.form.controls.instituicaoId.value); */
+
+
+    this.unidadeService.updateUnidade(this.form.value, this._id).subscribe(dados => {
       this.router.navigate(['/view-unidades', dados.id]);
+      console.log('Dados da Atualização: ' + dados);
     }, error => {
       console.log(error);
     });
 
-}
 
-//Troca a cor do botão quando o input está válido
-validaStyleButtonSalvar() {
-  if (this.form.valid) {
-    return {
-      'background': '#3f51b5',
-      'color': '#fff',
-      'border': '1px solid #3f51b5'
-    };
+    /* this.unidadeService.updateUnidade(this._id, form).subscribe(dados => {
+        this.router.navigate(['/view-unidades', dados.id]);
+      }, error => {
+        console.log(error);
+      }); */
   }
-}
 
-cancelar() {
-  this.unidadeService.getUnidades();
-  this.router.navigate(['/unidades']);
-}
+  //Troca a cor do botão quando o input está válido
+  validaStyleButtonSalvar() {
+    if (this.form.valid) {
+      return {
+        'background': '#3f51b5',
+        'color': '#fff',
+        'border': '1px solid #3f51b5'
+      };
+    }
+  }
+
+  cancelar() {
+    this.unidadeService.getUnidades();
+    this.router.navigate(['/unidades']);
+  }
 
 }

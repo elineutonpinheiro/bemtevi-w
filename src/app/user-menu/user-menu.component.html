@@ -1,32 +1,22 @@
 <span class="spacer"></span>
 <div class="userOptions">
-  <div class="circle">
-      <img src="https://i.stack.imgur.com/atUuf.png">
-  </div>
-  <div class="userName">Francisco Elineuton Pinheiro da Silva</div>
   <div class="userMenu">
-      <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
-          <mat-icon>more_vert</mat-icon>
-          <!-- <mat-icon>arrow_drop_down_circle</mat-icon>
-          <mat-icon>arrow_drop_down</mat-icon> -->
-        </button>
-        <mat-menu #menu="matMenu">
-          <button mat-menu-item>
-            <mat-icon>account_circle</mat-icon>
-            <span>Perfil</span>
-          </button>
-          <!-- <button mat-menu-item disabled>
-            <mat-icon>voicemail</mat-icon>
-            <span>Check voice mail</span>
-          </button> -->
-          <button mat-menu-item>
-            <mat-icon>notifications</mat-icon>
-            <span>Notificações</span>
-          </button>
-          <button mat-menu-item (click)="logout()" >
-              <mat-icon>exit_to_app</mat-icon>
-              <span>Sair</span>
-            </button>
-        </mat-menu>
+    <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with a menu">
+      <mat-icon>more_vert</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>
+        <mat-icon>account_circle</mat-icon>
+        <span>Perfil</span>
+      </button>
+      <button mat-menu-item>
+        <mat-icon>notifications</mat-icon>
+        <span>Notificações</span>
+      </button>
+      <button mat-menu-item (click)="logout()">
+        <mat-icon>exit_to_app</mat-icon>
+        <span>Sair</span>
+      </button>
+    </mat-menu>
   </div>
 </div>
