@@ -13,16 +13,18 @@ import { Router } from '@angular/router';
 export class AddUnidadesComponent implements OnInit {
 
   form: FormGroup;
-  unidade: Unidade;
   submitted = false;
   checked = false;
 
   constructor(private unidadeService: UnidadeService,
     private fb: FormBuilder,
-    private router: Router) { }
+    private router: Router) {
+
+      this.createForm();
+    }
 
   ngOnInit() {
-    this.createForm(this.unidade);
+
   }
 
   //Troca a cor do botão quando o input está válido
@@ -37,46 +39,37 @@ export class AddUnidadesComponent implements OnInit {
   }
 
 
-  createForm(unidade: Unidade) {
+  createForm() {
     this.form = this.fb.group({
-      nome: [null, [Validators.required, Validators.minLength(3)]],
+      nome: ['', [Validators.required, Validators.minLength(3)]],
       endereco: this.fb.group({
-        cep: [null],
-        numero: [null],
-        complemento: [null],
-        logradouro: [null],
-        bairro: [null],
-        cidade: [null],
-        estado: [null]
+        logradouro: ['', [Validators.required]],
+        numero: ['', [Validators.required]],
+        complemento: ['', [Validators.required]],
+        bairro: ['', [Validators.required]],
+        cidade: ['', [Validators.required]],
+        estado: ['', [Validators.required]],
+        cep: ['', [Validators.required,  Validators.minLength(8)]]
       }),
-      contato: this.fb.group({
-        telefone: [null],
-        email: [null]
-      }),
-      turmas: [0],
-      profissionais: [0],
-      alunos: [0],
-      ativa: [true]
-
-      /* nome: [null, [Validators.required, Validators.minLength(3)]],
-      ativa: true,
-      turmas: 0,
-      alunos: 0,
-      profissionais: 0 */
-
+      telefone: ['', [Validators.required]],
+      email: ['', [Validators.required, Validators.email]],
+      ativa: [true],
+      instituicaoId: [1]
     });
   }
 
   save() {
     this.unidadeService.createUnidade(this.form.value)
-      .subscribe(data => console.log(data), error => console.log(error));
-    //this.unidade = new Unidade();
-    this.gotoList();
+      .subscribe(response => {
+        console.log(response);
+      }, error => {
+        console.log(error)
+      });
+      this.gotoList();
   }
 
   onSubmit() {
     this.save();
-    //console.log(this.form.value);
   }
 
   gotoList() {

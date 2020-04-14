@@ -14,4 +14,5 @@ export class Profissional {
     this.senha = senha;
     this.ativo = ativo;
   }
+
 }

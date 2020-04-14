@@ -79,7 +79,7 @@ export class AddProfissionaisComponent implements OnInit {
   }
 
   listarUnidades() {
-    this.unidadeService.listarUnidadesPorInstituicaoId(2).
+    this.unidadeService.listarUnidadesPorInstituicaoId(1).
       subscribe(response => {
         this.unidades = response;
         this.form.controls.unidadeId.setValue(this.unidades[0].id);

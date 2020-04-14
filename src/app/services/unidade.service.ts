@@ -38,7 +38,7 @@ export class UnidadeService {
   }
 
   createUnidade(unidade: any): Observable<any> {
-    return this.http.post(`${this.baseUrl}/unidades/`, unidade);
+    return this.http.post(`${this.baseUrl}/unidades`, unidade);
   }
 
   /* updateUnidade(unidade: any): Observable<any> {

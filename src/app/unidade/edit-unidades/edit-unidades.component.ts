@@ -47,7 +47,7 @@ export class EditUnidadesComponent implements OnInit {
   createForm() {
     this.form = this.fb.group({
       id: [null],
-      nome: ['', [Validators.required, Validators.minLength(3)]],
+      nome: [''],
       endereco: this.fb.group({
         logradouro: [''],
         numero: [''],

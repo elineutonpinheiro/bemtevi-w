@@ -19,7 +19,6 @@
       <button mat-flat-button color="primary" id="button-new" [routerLink]="['/add-unidade']"
         routerLinkActive="router-link-active">NOVA UNIDADE</button>
     </div>
-
   </div>
   <div class="container-table-arrounded">
     <div class="table-container mat-elevation-z8">
@@ -32,7 +31,7 @@
         </ng-container>
 
         <!-- Turmas Column -->
-        <ng-container matColumnDef="endereco">
+        <ng-container matColumnDef="endereco" >
           <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Endereco </th>
           <td mat-cell *matCellDef="let element"> {{element.endereco.logradouro + ', ' + element.endereco.numero + ' - ' + element.endereco.bairro}} </td>
         </ng-container>

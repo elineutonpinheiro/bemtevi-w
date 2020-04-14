@@ -1,4 +1,5 @@
-import { Aluno } from '../models/aluno.models';
+import { Matricula } from './../models/matricula.models';
+import { Aluno } from 'src/app/models/aluno.models';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
@@ -8,12 +9,20 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AlunoService {
 
- /*  private serviceUrl = 'http://localhost:4200/api/alunos';
+ private baseUrl = 'http://192.168.0.109:8080';
 
   constructor(private http: HttpClient) { }
 
-  getResponsaveis(): Observable<Aluno[]> {
-    return this.http.get<Aluno[]>(`${this.serviceUrl}`);
-  } */
+  getAlunos(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}`);
+  }
+
+  listarAlunosPorInstituicaoId(id: any): Observable<Aluno[]> {
+    return this.http.get<Aluno[]>(`${this.baseUrl}/instituicoes/${id}/alunos`);
+  }
+
+  inserir(matricula: Matricula): Observable<any> {
+    return this.http.post(`${this.baseUrl}/matriculas`, matricula);
+  }
 
 }

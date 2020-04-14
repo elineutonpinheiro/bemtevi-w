@@ -5,7 +5,7 @@ import { ResponsavelService } from './services/responsavel.service';
 import { UnidadeService } from './services/unidade.service';
 import { AlunoService } from './services/aluno.service';
 
-import { MatPaginatorIntl } from '@angular/material';
+import { MatPaginatorIntl, MAT_DATE_LOCALE } from '@angular/material';
 import { PortalModule } from '@angular/cdk/portal';
 import { MaterialModule } from './material-module/material-module';
 import { ListUnidadesComponent } from './unidade/list-unidades/list-unidades.component';
@@ -40,6 +40,7 @@ import { ViewUnidadesComponent } from './unidade/view-unidades/view-unidades.com
 import { AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
+import { ViewProfissionaisComponent } from './profissional/view-profissionais/view-profissionais.component';
 
 @NgModule({
   declarations: [
@@ -64,6 +65,7 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
     RodapeComponent,
     UserMenuComponent,
     ViewUnidadesComponent,
+    ViewProfissionaisComponent,
   ],
   imports: [
     BrowserModule,
@@ -81,7 +83,9 @@ import { AngularFireAuthModule } from '@angular/fire/auth';
   ],
   providers: [
     { provide: MatPaginatorIntl, useValue: myMatPaginatorIntl() },
-    UnidadeService, AlunoService, ProfissionalService, ResponsavelService, TurmaService
+    UnidadeService, AlunoService, ProfissionalService, ResponsavelService, TurmaService,
+    {provide: MAT_DATE_LOCALE, useValue: 'pt-BR'},
+
   ],
   bootstrap: [AppComponent]
 })

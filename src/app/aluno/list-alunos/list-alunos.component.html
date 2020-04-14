@@ -15,7 +15,8 @@
       </mat-form-field>
     </div>
     <div class="div-new">
-      <button mat-flat-button color="primary" id="button-new">NOVO ALUNO</button>
+      <button mat-flat-button color="primary" id="button-new" [routerLink]="['/add-alunos']"
+      routerLinkActive="router-link-active">NOVO ALUNO</button>
     </div>
   </div>
   <div class="container-table-arrounded">
@@ -28,42 +29,40 @@
           <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
         </ng-container>
 
-        <!-- Turma Column -->
-        <ng-container matColumnDef="turma">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Turma </th>
-          <td mat-cell *matCellDef="let element"> {{element.turma}} </td>
+        <!-- Data de Nascimento Column -->
+        <ng-container matColumnDef="dataNascimento">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Data de Nascimento </th>
+          <td mat-cell *matCellDef="let element"> {{element.dataNascimento}} </td>
         </ng-container>
 
-        <!-- Unidade Column -->
-        <ng-container matColumnDef="unidade">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Unidade </th>
-          <td mat-cell *matCellDef="let element"> {{element.unidade}} </td>
+        <!-- Data de Nascimento Column -->
+        <ng-container matColumnDef="responsavel">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Responsável </th>
+          <td mat-cell *matCellDef="let element"> {{element.responsavel.nome + ' - ' + element.responsavel.parentesco}} </td>
         </ng-container>
 
-        <!-- Período Column -->
-        <ng-container matColumnDef="periodo">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Período </th>
-          <td mat-cell *matCellDef="let element"> {{element.periodo}} </td>
-        </ng-container>
-
-        <!-- Responsáveis Column -->
-        <ng-container matColumnDef="responsaveis">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Responsáveis </th>
-          <td mat-cell *matCellDef="let element"> {{element.responsaveis}} </td>
+        <!-- Status Column -->
+        <ng-container matColumnDef="status">
+          <th mat-header-cell *matHeaderCellDef class="title-column"> Status </th>
+          <td mat-cell *matCellDef="let element">
+            <span [ngSwitch]="element.ativo">
+              <mat-chip *ngSwitchCase="true"
+                style="width:20px; color:white; background: #3f51b5; border-radius: 2px; padding: 5px">
+                Ativo
+              </mat-chip>
+              <mat-chip *ngSwitchCase="false"
+                style="color:white; background: #ff4081; border-radius: 2px; padding: 5px">
+                Inativo
+              </mat-chip>
+            </span>
+          </td>
         </ng-container>
 
         <!-- Ações Column -->
         <ng-container matColumnDef="acoes">
           <th mat-header-cell *matHeaderCellDef class="title-column"> Ações </th>
           <td mat-cell *matCellDef="let element">
-            <button mat-icon-button aria-label="Example icon-button with a edit icon" class="icon-action"
-              id="icon-action-edit">
-              <mat-icon>edit</mat-icon>
-            </button>
-            <button mat-icon-button aria-label="Example icon-button with a delete icon" class="icon-action"
-              id="icon-action-delete">
-              <mat-icon>delete</mat-icon>
-            </button>
+            <button mat-stroked-button color="primary" class="buttonView" routerLink="/view-alunos/{{element.id}}">Visualizar</button>
           </td>
         </ng-container>
 

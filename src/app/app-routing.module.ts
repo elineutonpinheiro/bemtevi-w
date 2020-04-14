@@ -1,3 +1,7 @@
+import { AddAlunosComponent } from './aluno/add-alunos/add-alunos.component';
+import { AddResponsaveisComponent } from './responsavel/add-responsaveis/add-responsaveis.component';
+import { EditProfissionaisComponent } from './profissional/edit-profissionais/edit-profissionais.component';
+import { ViewProfissionaisComponent } from './profissional/view-profissionais/view-profissionais.component';
 import { AddProfissionaisComponent } from './profissional/add-profissionais/add-profissionais.component';
 import { AddTurmasComponent } from './turma/add-turmas/add-turmas.component';
 import { HomeComponent } from './home/home.component';
@@ -21,8 +25,12 @@ const routes: Routes = [
   {path: 'add-turmas', component: AddTurmasComponent},
   {path: 'profissionais', component: ListProfissionaisComponent},
   {path: 'add-profissionais', component: AddProfissionaisComponent},
+  {path: 'view-profissionais/:id', component: ViewProfissionaisComponent},
+  {path: 'edit-profissionais/:id', component: EditProfissionaisComponent},
   {path: 'responsaveis', component: ListResponsaveisComponent},
+  {path: 'add-responsaveis', component: AddResponsaveisComponent},
   {path: 'alunos', component: ListAlunosComponent},
+  {path: 'add-alunos', component: AddAlunosComponent},
   {path: 'add-unidade', component: AddUnidadesComponent},
   {path: 'edit-unidade', component: EditUnidadesComponent},
   {path: 'view-unidade', component: ViewUnidadesComponent}

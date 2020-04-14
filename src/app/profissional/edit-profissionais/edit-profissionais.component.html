@@ -1,3 +1,128 @@
-<p>
-  edit-profissionais works!
-</p>
+<form [formGroup]="form">
+  <mat-tab-group>
+    <mat-tab label="Profissional">
+      <div class="container">
+        <div class="container-field">
+          <div class="section-identificacao">
+            <div style="padding-bottom: 5px; ">
+              <span style="font-weight: bold;">Identificação</span>
+            </div>
+            <mat-divider></mat-divider>
+
+            <mat-grid-list cols="2" rowHeight="2:1" rowHeight="80px">
+              <mat-grid-tile>
+                <div class="container-name">
+                  <div class="title-field">Nome</div>
+                  <div class="input-field">
+                    <mat-form-field floatLabel="never" class="input-form-field" id="input-name">
+                      <input matInput placeholder="Maria da Silva" formControlName="nome">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="container-cargo">
+                  <div class="title-field">Cargo</div>
+                  <div class="select-field">
+                    <mat-form-field class="select-form-field">
+                      <mat-select formControlName="cargo">
+                        <mat-option>Nenhum</mat-option>
+                        <mat-option value="Cuidador">Cuidador</mat-option>
+                        <mat-option value="Professor">Professor</mat-option>
+                        <mat-option value="Pedagogo">Pedagogo</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+
+
+
+          </div>
+
+          <div class="section-acesso">
+            <div class="container-acesso">
+              <div style="padding-bottom: 5px; ">
+                <span style="font-weight: bold;">Acesso</span>
+              </div>
+              <mat-divider></mat-divider>
+              <div class="container-email">
+                <div class="title-field">E-mail</div>
+                <div class="input-field-name">
+                  <mat-form-field floatLabel="never" class="input-form-field" id="input-email">
+                    <input matInput placeholder="seuemail@gmail.com" formControlName="email">
+                  </mat-form-field>
+                </div>
+              </div>
+              <div class="container-senha">
+                <div class="title-field">Senha</div>
+                <div class="input-field">
+                  <mat-form-field floatLabel="never" class="input-form-field" id="input-senha">
+                    <input matInput [type]="hide ? 'password' : 'text'" formControlName="senha">
+                    <button mat-icon-button matSuffix (click)="hide = !hide">
+                      <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                    </button>
+                  </mat-form-field>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+    <mat-tab label="Lotação">
+      <div class="container">
+        <div class="container-field">
+          <div class="section-lotacao">
+            <div style="padding-bottom: 5px; ">
+              <span style="font-weight: bold;">Lotação</span>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="container-unidade">
+              <mat-grid-list cols="2" rowHeight="2:1" rowHeight="80px">
+                <mat-grid-tile>
+                  <div class="container-unidade">
+                    <div class="title-field">Unidade</div>
+                    <div class="select-field">
+                      <mat-form-field class="select-form-field">
+                        <mat-select formControlName="unidadeId" (selectionChange)="atualizarTurmas()">
+                          <mat-option>Nenhuma</mat-option>
+                          <mat-option *ngFor="let unidade of unidades; first as f" [value]="unidade.id" selected="f">
+                            {{unidade.nome}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="container-turma">
+                    <div class="title-field">Turma</div>
+                    <div class="select-field">
+                      <mat-form-field class="select-form-field">
+                        <mat-select formControlName="turmaId">
+                          <mat-option>Nenhuma</mat-option>
+                          <mat-option *ngFor="let turma of turmas" [value]="turma.id">
+                            {{turma.nome}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </div>
+          </div>
+          <div class="section-actions">
+            <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid"
+              [ngStyle]="validaStyleButtonSalvar()" class="button-form" id="button-salvar">Salvar</button>
+            <button mat-flat-button color="primary" (click)="gotoList()" class="button-form"
+              id="button-cancelar">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</form>
