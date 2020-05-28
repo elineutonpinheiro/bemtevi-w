@@ -25,7 +25,7 @@ table {
 }
 
 .mat-row:nth-child(odd) {
-  background-color: rgb(243, 243, 243);
+  background-color: rgb(248, 248, 248);
 }
 
 .mat-cell {
@@ -33,12 +33,12 @@ table {
 }
 
 td.mat-cell {
-  padding: 10px;
+
 }
 
 /* Bordas das linhas */
 td, th {
-  border-color: rgb(243, 243, 243);
+  border-color: rgb(248, 248, 248);
 }
 
 
@@ -139,3 +139,13 @@ Campo de pesquisa
   height: 42px;
 }
 
+#button-new {
+  background: #ffc906;
+  color: black;
+}
+
+.buttonView {
+  background: #ffc906;
+  color: black;
+  border: none;
+}

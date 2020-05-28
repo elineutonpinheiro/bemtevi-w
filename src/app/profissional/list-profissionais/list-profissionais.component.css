@@ -33,7 +33,6 @@ table {
 }
 
 td.mat-cell {
-  padding: 10px 10px 10px 0px;
 }
 
 /* Bordas das linhas */
@@ -139,3 +138,13 @@ Campo de pesquisa
   height: 42px;
 }
 
+#button-new {
+  background: #ffc906;
+  color: black;
+}
+
+.buttonView {
+  background: #ffc906;
+  color: black;
+  border: none;
+}

@@ -1,6 +1,6 @@
 <form [formGroup]="form">
   <mat-tab-group>
-    <mat-tab label="Cadastro">
+    <mat-tab label="Criança">
       <div class="container">
         <div class="container-field">
           <div class="section-identificacao">
@@ -8,24 +8,23 @@
               <span style="font-weight: bold;">Identificação</span>
             </div>
             <mat-divider></mat-divider>
-
             <mat-grid-list cols="2" rowHeight="2:1" rowHeight="80px">
               <mat-grid-tile>
                 <div class="container-name">
                   <div class="title-field">Nome</div>
                   <div class="input-field">
                     <mat-form-field floatLabel="never" class="input-form-field" id="input-name">
-                      <input matInput placeholder="Maria da Silva" formControlName="nome">
+                      <input matInput placeholder="Biatriz de Souza" formControlName="nome">
                     </mat-form-field>
                   </div>
                 </div>
               </mat-grid-tile>
               <mat-grid-tile>
-                <div class="container-dataNascimento">
+                <div class="container-name">
                   <div class="title-field">Data de Nascimento</div>
                   <div class="input-field">
-                    <mat-form-field>
-                      <input matInput [matDatepicker]="picker" formControlName="dataNascimento">
+                    <mat-form-field floatLabel="never" class="input-form-field" id="input-name">
+                      <input matInput [matDatepicker]="picker"  formControlName="dataNascimento">
                       <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
                       <mat-datepicker #picker></mat-datepicker>
                     </mat-form-field>
@@ -36,41 +35,86 @@
           </div>
         </div>
       </div>
-    </mat-tab>
-    <mat-tab label="Turma">
-
-
-      <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
-
-        <!-- Position Column -->
-        <ng-container matColumnDef="id">
-          <th mat-header-cell *matHeaderCellDef> Código </th>
-          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
-        </ng-container>
-
-        <!-- Name Column -->
-        <ng-container matColumnDef="nome">
-          <th mat-header-cell *matHeaderCellDef> Nome </th>
-          <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
-        </ng-container>
-
-        <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-        <tr mat-row *matRowDef="let row; columns: displayedColumns;"
-            (click)="onRowClicked(row)">
-        </tr>
-      </table>
-
-      <div class="section-actions">
-        <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid"
-          [ngStyle]="validaStyleButtonSalvar()" class="button-form" id="button-salvar">Salvar</button>
-        <button mat-flat-button color="primary" (click)="gotoList()" class="button-form"
-          id="button-cancelar">Cancelar</button>
+      <div class="container">
+        <div class="container-field">
+          <div class="section-lotacao">
+            <div style="padding-bottom: 5px; ">
+              <span style="font-weight: bold;">Vinculação</span>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="container-unidade">
+              <mat-grid-list cols="2" rowHeight="2:1" rowHeight="80px">
+                <mat-grid-tile>
+                  <div class="container-unidade">
+                    <div class="title-field">Turmas</div>
+                    <div class="select-field">
+                      <mat-form-field class="select-form-field">
+                        <mat-select formControlName="turmaId">
+                          <mat-option>Nenhuma</mat-option>
+                          <mat-option *ngFor="let turma of turmas; first as f" [value]="turma.id" selected="f">
+                            {{turma.nome}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </div>
+          </div>
+          <div class="section-actions">
+            <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid"
+              [ngStyle]="validaStyleButtonSalvar()" class="button-form" id="button-salvar">Salvar</button>
+            <button mat-flat-button color="primary" (click)="gotoList()" class="button-form"
+              id="button-cancelar">Cancelar</button>
+          </div>
+        </div>
       </div>
-
-
     </mat-tab>
-    <mat-tab label="Responsavel">
+    <mat-tab label="Responsável">
 
+      <div class="data-table">
+        <!-- Barra de pesquisa, filtro e botão de NOVO -->
+        <div class="div-bar-options">
+          <div class="div-search">
+            <mat-form-field floatLabel="never" class="search-form-field">
+              <input matInput [(ngModel)]="searchKey" (keyup)="applyFilter($event.target.value)" placeholder="Buscar"
+                class="input-search">
+              <button disabled mat-icon-button matSuffix aria-label="search" *ngIf="!searchKey"
+                style="width: 32px; height: 32px">
+                <mat-icon>search</mat-icon>
+              </button>
+              <button mat-icon-button matSuffix aria-label="clear" (click)="onSearchClear()" *ngIf="searchKey">
+                <mat-icon>clear</mat-icon>
+              </button>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="container-table-arrounded">
+          <div class="table-container mat-elevation-z8">
+            <table mat-table [dataSource]="dataSource" matSort>
+
+              <!-- Responsavel Column -->
+              <ng-container matColumnDef="nome">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Responsável </th>
+                <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
+              </ng-container>
+
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"  [ngClass]="{'highlighted': selectRowIndex == row.id}" (mouseover)="onRowClicked(row)"
+                  (click)="onRowClicked(row)">
+              </tr>
+            </table>
+
+          </div>
+
+          <mat-paginator [pageSizeOptions]="[5, 10, 20]" showFirstLastButtons></mat-paginator>
+
+        </div>
+
+      </div>
     </mat-tab>
   </mat-tab-group>
 </form>
+

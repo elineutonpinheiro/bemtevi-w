@@ -1,3 +1,4 @@
+import { AddInstituicoesComponent } from './instituicao/add-instituicoes/add-instituicoes.component';
 import { AddAlunosComponent } from './aluno/add-alunos/add-alunos.component';
 import { AddResponsaveisComponent } from './responsavel/add-responsaveis/add-responsaveis.component';
 import { EditProfissionaisComponent } from './profissional/edit-profissionais/edit-profissionais.component';
@@ -15,6 +16,7 @@ import { AddUnidadesComponent } from './unidade/add-unidades/add-unidades.compon
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { ListAlunosComponent } from './aluno/list-alunos/list-alunos.component';
+import { ListaInstituicoesComponent } from './instituicao/lista-instituicoes/lista-instituicoes.component';
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
@@ -33,7 +35,9 @@ const routes: Routes = [
   {path: 'add-alunos', component: AddAlunosComponent},
   {path: 'add-unidade', component: AddUnidadesComponent},
   {path: 'edit-unidade', component: EditUnidadesComponent},
-  {path: 'view-unidade', component: ViewUnidadesComponent}
+  {path: 'view-unidade', component: ViewUnidadesComponent},
+  {path: 'instituicoes', component: ListaInstituicoesComponent},
+  {path: 'add-instituicoes', component: AddInstituicoesComponent},
 
 ];
 

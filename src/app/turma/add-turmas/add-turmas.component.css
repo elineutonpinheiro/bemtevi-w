@@ -1,7 +1,156 @@
-.mat-stepper-horizontal {
-  margin-top: 8px;
+.cabecalho{
+  padding: 5px !important;
+  padding-left: 10px;
+  font-weight: bold;
+  font-size: 14px;
 }
 
-.mat-form-field {
-  margin-top: 16px;
+.container{
+  background: whitesmoke;
+  /*height: 470px;*/
 }
+
+.container-field{
+  padding: 16px 16px 0px 16px;
+}
+
+/* Seção Identificação*/
+.section-identificacao{
+  margin-top: 10px;
+  background: white;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+#input-name{
+  width: 100%;
+}
+
+.title-field{
+  margin-top: 10px;
+  font-size: 14px;
+}
+
+.container-name {
+  padding: 5px;
+}
+
+.input-fild-name {
+  padding: 5px;
+}
+
+.container-cargo {
+  padding: 5px;
+}
+
+.select-form-field {
+  width: 100%;
+}
+
+.select-field, .input-form-field{
+  width: 100%;
+  margin-top: 5px;
+  padding: 5px 15px;
+  font-size: 14px;
+  background-color: whitesmoke;
+  border-radius: 4px;
+  box-shadow: inset 0 0 1.7px 0 rgb(180, 180, 180);
+  box-sizing: border-box; /*Resolve o problema do input passar a div*/
+}
+
+
+/*Seção Acesso*/
+.section-acesso{
+  margin-top: 10px;
+  background: white;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.container-acesso{
+  padding: 5px;
+}
+
+#input-email{
+  width: 50%;
+}
+
+#input-senha{
+  width: 50%;
+}
+
+/* Seção Lotacao*/
+.section-lotacao{
+  background: white;
+  border-radius: 4px;
+  padding: 10px;
+}
+
+.container-unidade{
+  padding: 5px;
+}
+
+.container-turma{
+  padding: 5px;
+}
+
+::ng-deep .mat-grid-tile .mat-figure {
+  display: block !important; /* or whichever you need */
+}
+
+/*Configurações especiais dos FIELDS do Angular Material*/
+
+  ::ng-deep .mat-form-field-wrapper {
+    padding-bottom: 0px !important;
+  }
+
+  ::ng-deep .mat-form-field-infix {
+    border-top: 0px !important;
+    padding-top: 5px;
+    padding-bottom: 5px;
+  }
+
+  ::ng-deep .mat-form-field-suffix button {
+
+  }
+
+  ::ng-deep .mat-form-field-underline, ::ng-deep .mat-form-field-ripple {
+    display: none !important;
+  }
+
+/*Seção Botões*/
+
+.section-actions{
+  margin-top: 10px;
+  background: white;
+  padding: 0px 20px 10px 20px;
+  border-radius: 4px;
+}
+
+.button-form {
+  padding: 0px;
+  margin-right: 10px;
+  margin-top: 10px;
+  width: 100px;
+  color: white;
+  font-size: 14px;
+  border-radius: 2px;
+  height: 90%;
+
+}
+
+#button-salvar {
+  border: 1px solid rgb(238, 236, 236);
+  background: whitesmoke;
+  border-radius: 4px;
+}
+
+#button-cancelar {
+  /*float: right;*/
+  color: #ffc906;
+  background: white;
+  border: 1px solid #ffc906;
+  border-radius: 4px;
+}
+
+

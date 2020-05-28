@@ -24,7 +24,8 @@
   position: sticky;
   top: 0;
   z-index: 1;
-  border-bottom: 5px solid #243386;
+  border-bottom: 5px solid#22222222;
+  /* border-bottom: 5px solid #243386; */
 }
 
 .container-img img{
@@ -43,3 +44,28 @@
   flex: 1 1 auto;
 }
 
+.div-new {
+  width: 100%;
+  text-align: end;
+  margin: 0px;
+  float: left;
+  bottom: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  display: flex;
+}
+
+#button-new {
+  width: 100% !important;
+  bottom: 0px;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  /* display: flex */
+  border-radius: 0px;
+  text-align: center;
+  text-transform: uppercase;
+  background: #ffc906;
+  color: black;;
+}

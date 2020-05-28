@@ -1,13 +1,15 @@
+import { TurmaService } from './../../services/turma.service';
+import { Turma } from './../../models/turma.models';
 import { Matricula } from './../../models/matricula.models';
 import { ResponsavelService } from './../../services/responsavel.service';
 import { AlunoService } from './../../services/aluno.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Aluno } from 'src/app/models/aluno.models';
 import { AuthService } from 'src/app/services/auth.service';
 import { Router } from '@angular/router';
 import { Responsavel } from 'src/app/models/responsavel.models';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
 import { SelectionModel } from '@angular/cdk/collections';
 
 @Component({
@@ -17,7 +19,7 @@ import { SelectionModel } from '@angular/cdk/collections';
 })
 export class AddAlunosComponent implements OnInit {
 
-  displayedColumns: string[] = ['id', 'nome'];
+  displayedColumns: string[] = ['nome'];
   dataSource = new MatTableDataSource<Responsavel>();
   selection = new SelectionModel<Responsavel>(true, []);
 
@@ -26,12 +28,21 @@ export class AddAlunosComponent implements OnInit {
   responsaveis: Responsavel[];
   responsavel: Responsavel;
   matricula: Matricula;
+  turmas: Turma[];
+
+  selectRowIndex: any;
 
   hide = true;
+
+  @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
+  @ViewChild(MatSort, {static: true}) sort: MatSort;
+
+  searchKey: string;
 
   constructor(
     private alunoService: AlunoService,
     private responsavelService: ResponsavelService,
+    private turmaService: TurmaService,
     private auth: AuthService,
     private fb: FormBuilder,
     private router: Router
@@ -41,14 +52,33 @@ export class AddAlunosComponent implements OnInit {
 
   ngOnInit() {
     this.listarResponsaveis();
+    this.listarTurmas();
+  }
+
+  ngAfterViewInit(): void {
+    this.dataSource.paginator = this.paginator;
+    this.dataSource.sort = this.sort;
+  }
+
+  applyFilter(filterValue: string) {
+    this.dataSource.filter = filterValue.trim().toLowerCase();
+
+    if (this.dataSource.paginator) {
+      this.dataSource.paginator.firstPage();
+    }
+  }
+
+  onSearchClear() {
+    this.searchKey = "";
+    this.applyFilter(this.searchKey);
   }
 
   onRowClicked(row) {
+    this.selectRowIndex = row.id;
     //console.log('Row clicked: ', row);
     this.responsavelService.getResponsavelPorId(row.id).
       subscribe(response => {
         this.responsavel = response;
-        console.log(this.responsavel);
       }, error => { });
   }
 
@@ -56,9 +86,9 @@ export class AddAlunosComponent implements OnInit {
   validaStyleButtonSalvar() {
     if (this.form.valid) {
       return {
-        'background': '#3f51b5',
+        'background': '#ffc906',
         'color': '#fff',
-        'border': '1px solid #3f51b5'
+        'border': '1px solid #ffc906'
       };
     }
   }
@@ -67,7 +97,7 @@ export class AddAlunosComponent implements OnInit {
     this.form = this.fb.group({
       nome: ['', [Validators.required, Validators.minLength(3)]],
       dataNascimento: ['', [Validators.required]],
-      turmaId: [null],
+      turmaId: ['', [Validators.required]],
       ativo: [true]
     });
   }
@@ -85,7 +115,8 @@ export class AddAlunosComponent implements OnInit {
   salvarMatricula() {
     const aluno = new Aluno(null, this.form.controls.nome.value, this.form.controls.dataNascimento.value, this.responsavel,
       this.form.controls.ativo.value);
-    const matricula = new Matricula(aluno, 1, null);
+    const turma = this.form.value.turmaId;
+    const matricula = new Matricula(aluno, turma, null);
     this.alunoService.inserir(matricula)
       .subscribe(data => {
         this.matricula = data;
@@ -96,10 +127,18 @@ export class AddAlunosComponent implements OnInit {
   }
 
   listarResponsaveis() {
-    this.responsavelService.listarResponsaveisPorInstituicaoId(1)
+    this.responsavelService.getResponsaveis()
       .subscribe(dados => {
         this.dataSource.data = dados;
         console.log(dados);
       });
+  }
+
+  listarTurmas() {
+    this.turmaService.getTurmas().
+      subscribe(response => {
+        this.turmas = response;
+        this.form.controls.turmaId.setValue(this.turmas[0].id);
+      }, error => { });
   }
 }

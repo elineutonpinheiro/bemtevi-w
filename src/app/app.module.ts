@@ -41,6 +41,8 @@ import { AngularFireModule} from '@angular/fire';
 import { environment } from 'src/environments/environment';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { ViewProfissionaisComponent } from './profissional/view-profissionais/view-profissionais.component';
+import { ListaInstituicoesComponent } from './instituicao/lista-instituicoes/lista-instituicoes.component';
+import { AddInstituicoesComponent } from './instituicao/add-instituicoes/add-instituicoes.component';
 
 @NgModule({
   declarations: [
@@ -66,6 +68,8 @@ import { ViewProfissionaisComponent } from './profissional/view-profissionais/vi
     UserMenuComponent,
     ViewUnidadesComponent,
     ViewProfissionaisComponent,
+    ListaInstituicoesComponent,
+    AddInstituicoesComponent,
   ],
   imports: [
     BrowserModule,

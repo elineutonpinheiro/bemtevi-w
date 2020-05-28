@@ -1,29 +1,30 @@
-import { ResponsavelService } from './../../services/responsavel.service';
-import { Responsavel } from './../../models/responsavel.models';
+import { InstituicaoService } from './../../services/instituicao.service';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
+import { Aluno } from 'src/app/models/aluno.models';
+import { AlunoService } from 'src/app/services/aluno.service';
 
 @Component({
-  selector: 'app-list-responsaveis',
-  templateUrl: './list-responsaveis.component.html',
-  styleUrls: ['./list-responsaveis.component.css']
+  selector: 'app-lista-instituicoes',
+  templateUrl: './lista-instituicoes.component.html',
+  styleUrls: ['./lista-instituicoes.component.css']
 })
-export class ListResponsaveisComponent implements OnInit {
+export class ListaInstituicoesComponent implements OnInit {
 
-  displayedColumns: string[] = ['nome', 'parentesco', 'qtdeMatriculas', 'status', 'acoes'];
-  dataSource = new MatTableDataSource<Responsavel>();
+  displayedColumns: string[] = ['nome', 'status', 'acoes'];
+  dataSource = new MatTableDataSource<Aluno>();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   searchKey: string;
 
-  constructor(private responsavelService: ResponsavelService) {
+  constructor(private instituicaoService: InstituicaoService) {
 
   }
 
   ngOnInit() {
-    this.getResponsaveis();
+   this.getAlunos();
   }
 
   ngAfterViewInit(): void {
@@ -44,14 +45,12 @@ export class ListResponsaveisComponent implements OnInit {
     this.applyFilter(this.searchKey);
   }
 
-  getResponsaveis() {
-    this.responsavelService.getResponsaveis()
+  getAlunos() {
+    this.instituicaoService.getInstituicoes()
     .subscribe(dados => {
       this.dataSource.data = dados;
       console.log(dados);
     });
   }
 
-
 }
-

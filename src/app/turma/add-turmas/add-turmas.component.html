@@ -1,28 +1,105 @@
-<mat-horizontal-stepper [linear]="isLinear" #stepper>
-  <mat-step [stepControl]="firstFormGroup">
-    <form [formGroup]="firstFormGroup">
-      <ng-template matStepLabel>Dados do Profissional</ng-template>
-      <mat-form-field>
-        <mat-label>Name</mat-label>
-        <input matInput placeholder="Last name, First name" formControlName="firstCtrl" required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperNext>Next</button>
+<mat-tab-group>
+  <mat-tab label="Cadastro">
+    <form [formGroup]="form">
+      <div class="container">
+
+        <div class="container-field">
+          <div class="section-identificacao">
+            <div style="padding-bottom: 5px; ">
+              <span style="font-weight: bold;">Identificação</span>
+            </div>
+            <mat-divider></mat-divider>
+
+            <mat-grid-list cols="2" rowHeight="2:1" rowHeight="80px">
+              <mat-grid-tile>
+                <div class="container-name">
+                  <div class="title-field">Nome</div>
+                  <div class="input-field">
+                    <mat-form-field floatLabel="never" class="input-form-field" id="input-name">
+                      <input matInput placeholder="Berçário I" formControlName="nome">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="container-name">
+                  <div class="title-field">Sala</div>
+                  <div class="input-field">
+                    <mat-form-field floatLabel="never" class="input-form-field" id="input-name">
+                      <input matInput placeholder="101" formControlName="sala">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-grid-tile>
+              <mat-grid-tile>
+                <div class="container-name">
+                  <div class="title-field">Período</div>
+                  <div class="select-field">
+                    <mat-form-field class="select-form-field">
+                      <mat-select formControlName="periodo">
+                        <mat-option>Nenhum</mat-option>
+                        <mat-option value="Manhã">Manhã</mat-option>
+                        <mat-option value="Tarde">Tarde</mat-option>
+                        <mat-option value="Integral">Integral</mat-option>
+                      </mat-select>
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+        </div>
+      </div>
+      <div class="container">
+        <div class="container-field">
+          <div class="section-lotacao">
+            <div style="padding-bottom: 5px; ">
+              <span style="font-weight: bold;">Vinculação</span>
+            </div>
+            <mat-divider></mat-divider>
+            <div class="container-unidade">
+              <mat-grid-list cols="2" rowHeight="2:1" rowHeight="80px">
+                <mat-grid-tile>
+                  <div class="container-unidade">
+                    <div class="title-field">Unidade</div>
+                    <div class="select-field">
+                      <mat-form-field class="select-form-field">
+                        <mat-select formControlName="unidadeId">
+                          <mat-option>Nenhuma</mat-option>
+                          <mat-option *ngFor="let unidade of unidades; first as f" [value]="unidade.id" selected="f">
+                            {{unidade.nome}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+                <mat-grid-tile>
+                  <div class="container-turma">
+                    <div class="title-field">Ano Letivo</div>
+                    <div class="select-field">
+                      <mat-form-field class="select-form-field">
+                        <mat-select formControlName="anoLetivoId">
+                          <mat-option>Nenhuma</mat-option>
+                          <mat-option *ngFor="let anoLetivo of anosLetivos" [value]="anoLetivo.id">
+                            {{anoLetivo.descricao}}
+                          </mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                    </div>
+                  </div>
+                </mat-grid-tile>
+              </mat-grid-list>
+            </div>
+          </div>
+          <div class="section-actions">
+            <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid"
+              [ngStyle]="validaStyleButtonSalvar()" class="button-form" id="button-salvar">Salvar</button>
+            <button mat-flat-button color="primary" (click)="gotoList()" class="button-form"
+              id="button-cancelar">Cancelar</button>
+          </div>
+        </div>
       </div>
     </form>
-  </mat-step>
-  <mat-step [stepControl]="secondFormGroup">
-    <form [formGroup]="secondFormGroup">
-      <ng-template matStepLabel>Lotação</ng-template>
-      <mat-form-field>
-        <mat-label>Address</mat-label>
-        <input matInput formControlName="secondCtrl" placeholder="Ex. 1 Main St, New York, NY"
-               required>
-      </mat-form-field>
-      <div>
-        <button mat-button matStepperPrevious>Back</button>
-        <button mat-button matStepperNext>Next</button>
-      </div>
-    </form>
-  </mat-step>
-</mat-horizontal-stepper>
+  </mat-tab>
+</mat-tab-group>

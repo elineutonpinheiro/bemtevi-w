@@ -13,15 +13,17 @@ import { Router } from '@angular/router';
 export class AddUnidadesComponent implements OnInit {
 
   form: FormGroup;
+  unidade: Unidade;
   submitted = false;
   checked = false;
 
-  constructor(private unidadeService: UnidadeService,
+  constructor(
+    private unidadeService: UnidadeService,
     private fb: FormBuilder,
     private router: Router) {
 
-      this.createForm();
-    }
+    this.createForm();
+  }
 
   ngOnInit() {
 
@@ -31,9 +33,9 @@ export class AddUnidadesComponent implements OnInit {
   validaStyleButtonSalvar() {
     if (this.form.valid) {
       return {
-        'background': '#3f51b5',
+        'background': '#ffc906',
         'color': '#fff',
-        'border': '1px solid #3f51b5'
+        'border': '1px solid #ffc906'
       };
     }
   }
@@ -45,11 +47,11 @@ export class AddUnidadesComponent implements OnInit {
       endereco: this.fb.group({
         logradouro: ['', [Validators.required]],
         numero: ['', [Validators.required]],
-        complemento: ['', [Validators.required]],
+        complemento: [''],
         bairro: ['', [Validators.required]],
         cidade: ['', [Validators.required]],
         estado: ['', [Validators.required]],
-        cep: ['', [Validators.required,  Validators.minLength(8)]]
+        cep: ['', [Validators.required, Validators.minLength(8)]]
       }),
       telefone: ['', [Validators.required]],
       email: ['', [Validators.required, Validators.email]],
@@ -58,23 +60,24 @@ export class AddUnidadesComponent implements OnInit {
     });
   }
 
-  save() {
-    this.unidadeService.createUnidade(this.form.value)
-      .subscribe(response => {
-        console.log(response);
-      }, error => {
-        console.log(error)
-      });
-      this.gotoList();
-  }
-
   onSubmit() {
     this.save();
+    this.gotoList();
   }
 
   gotoList() {
     this.unidadeService.getUnidades();
     this.router.navigate(['/unidades']);
+  }
+
+  save() {
+    this.unidadeService.createUnidade(this.form.value)
+      .subscribe(response => {
+        this.unidade = response;
+        console.log(this.unidade);
+      }, error => {
+        console.log(error);
+      });
   }
 
 }

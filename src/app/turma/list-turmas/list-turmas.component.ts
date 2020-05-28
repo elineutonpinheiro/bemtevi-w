@@ -1,45 +1,7 @@
+import { TurmaService } from './../../services/turma.service';
+import { Turma } from './../../models/turma.models';
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { MatTableDataSource, MatPaginator, MatSort } from '@angular/material';
-
-export interface TurmaData {
-  id: string;
-  turma: string;
-  unidade: string;
-  sala: string;
-  alunos: string;
-  profissionais: string;
-}
-
-/** Constants used to fill up our data base. */
-
-/*------------------------------------------------------------------------------*/
-/* É mais correto por uma tabela só ou criar um elemento para cada propriedade? */
-/*------------------------------------------------------------------------------*/
-
-const UNIDADES: string[] = [
-  'Escolhinha Feliz', 'Arco-Íris', 'Bela Escuela', 'Corujinha'
-];
-
-const TURMAS: string[] = [
-  '1', '2', '3', '4'
-];
-
-const SALA: string[] = [
-  '12', '14', '7', '8'
-];
-
-const ALUNOS: string[] = [
-  '10', '20', '30', '40'
-];
-
-const PROFISSIONAIS: string[] = [
-  '2', '1', '3', '5'
-];
-
-/**
- * @title Data table with sorting, pagination, and filtering.
-*/
-
 
 @Component({
   selector: 'app-list-turmas',
@@ -47,23 +9,23 @@ const PROFISSIONAIS: string[] = [
   styleUrls: ['./list-turmas.component.css']
 })
 export class ListTurmasComponent implements OnInit {
-  displayedColumns: string[] = ['turma', 'unidade', 'sala', 'alunos', 'profissionais', 'acoes'];
-  dataSource: MatTableDataSource<TurmaData>;
+  displayedColumns: string[] = ['turma', 'unidade', 'periodo', 'sala', 'anoLetivo', 'status', 'acoes'];
+  dataSource = new MatTableDataSource<Turma>();
 
   @ViewChild(MatPaginator, {static: true}) paginator: MatPaginator;
   @ViewChild(MatSort, {static: true}) sort: MatSort;
 
   searchKey: string;
+  turma: Turma;
 
-  constructor() {
-    // Cria 20 unidades
-    const turmas = Array.from({length: 20}, (_, k) => createNewTurma(k + 1));
-
-    // Assign the data to the data source for the table to render
-    this.dataSource = new MatTableDataSource(turmas);
+  constructor(private turmaService: TurmaService) {
   }
 
   ngOnInit() {
+    this.getTurmas();
+  }
+
+  ngAfterViewInit(): void {
     this.dataSource.paginator = this.paginator;
     this.dataSource.sort = this.sort;
   }
@@ -81,18 +43,13 @@ export class ListTurmasComponent implements OnInit {
     this.applyFilter(this.searchKey);
   }
 
+  getTurmas() {
+    this.turmaService.getTurmas()
+    .subscribe(dados => {
+      this.dataSource.data = dados;
+      console.log(dados);
+    });
+  }
+
 }
 
-/** Builds and returns a new Unidade. */
-function createNewTurma(id: number): TurmaData {
-  const turmas = TURMAS[Math.round(Math.random() * (TURMAS.length - 1))];
-
-  return {
-    id: id.toString(),
-    turma: turmas,
-    unidade: UNIDADES[Math.round(Math.random() * (UNIDADES.length - 1))],
-    sala: SALA[Math.round(Math.random() * (SALA.length - 1))],
-    alunos: ALUNOS[Math.round(Math.random() * (ALUNOS.length - 1))],
-    profissionais: PROFISSIONAIS[Math.round(Math.random() * (PROFISSIONAIS.length - 1))]
-  };
-}

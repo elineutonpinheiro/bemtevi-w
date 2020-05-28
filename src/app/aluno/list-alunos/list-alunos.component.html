@@ -16,7 +16,7 @@
     </div>
     <div class="div-new">
       <button mat-flat-button color="primary" id="button-new" [routerLink]="['/add-alunos']"
-      routerLinkActive="router-link-active">NOVO ALUNO</button>
+      routerLinkActive="router-link-active">NOVA CRIANÇA</button>
     </div>
   </div>
   <div class="container-table-arrounded">
@@ -25,20 +25,20 @@
 
         <!-- Aluno Column -->
         <ng-container matColumnDef="nome">
-          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Aluno(a) </th>
+          <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Criança </th>
           <td mat-cell *matCellDef="let element"> {{element.nome}} </td>
         </ng-container>
 
         <!-- Data de Nascimento Column -->
         <ng-container matColumnDef="dataNascimento">
           <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Data de Nascimento </th>
-          <td mat-cell *matCellDef="let element"> {{element.dataNascimento}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.dataNascimento | date: 'dd/MM/yyyy'}} </td>
         </ng-container>
 
         <!-- Data de Nascimento Column -->
         <ng-container matColumnDef="responsavel">
           <th mat-header-cell *matHeaderCellDef mat-sort-header class="title-column"> Responsável </th>
-          <td mat-cell *matCellDef="let element"> {{element.responsavel.nome + ' - ' + element.responsavel.parentesco}} </td>
+          <td mat-cell *matCellDef="let element"> {{element.nomeResponsavel + ' - ' + element.parentescoResponsavel | titlecase}} </td>
         </ng-container>
 
         <!-- Status Column -->
@@ -47,12 +47,12 @@
           <td mat-cell *matCellDef="let element">
             <span [ngSwitch]="element.ativo">
               <mat-chip *ngSwitchCase="true"
-                style="width:20px; color:white; background: #3f51b5; border-radius: 2px; padding: 5px">
-                Ativo
+                style="width:20px; color:black; background: none; border: 1px solid #FFC906; border-radius: 2px; padding: 5px">
+                Ativa
               </mat-chip>
               <mat-chip *ngSwitchCase="false"
-                style="color:white; background: #ff4081; border-radius: 2px; padding: 5px">
-                Inativo
+                style="color:white; background: #C1C8D9; border-radius: 2px; padding: 5px">
+                Inativa
               </mat-chip>
             </span>
           </td>

@@ -1,0 +1,36 @@
+<form [formGroup]="form">
+  <mat-tab-group>
+    <mat-tab label="Cadastro">
+      <div class="container">
+        <div class="container-field">
+          <div class="section-identificacao">
+            <div style="padding-bottom: 5px; ">
+              <span style="font-weight: bold;">Identificação</span>
+            </div>
+            <mat-divider></mat-divider>
+
+            <mat-grid-list cols="2" rowHeight="2:1" rowHeight="80px">
+              <mat-grid-tile>
+                <div class="container-name">
+                  <div class="title-field">Nome</div>
+                  <div class="input-field">
+                    <mat-form-field floatLabel="never" class="input-form-field" id="input-name">
+                      <input matInput placeholder="Escolinha Feliz" formControlName="nome">
+                    </mat-form-field>
+                  </div>
+                </div>
+              </mat-grid-tile>
+            </mat-grid-list>
+          </div>
+          <div class="section-actions">
+            <button mat-flat-button color="primary" (click)="onSubmit()" [disabled]="form.invalid"
+              [ngStyle]="validaStyleButtonSalvar()" class="button-form" id="button-salvar">Salvar</button>
+            <button mat-flat-button color="primary" (click)="gotoList()" class="button-form"
+              id="button-cancelar">Cancelar</button>
+          </div>
+        </div>
+      </div>
+    </mat-tab>
+
+  </mat-tab-group>
+</form>

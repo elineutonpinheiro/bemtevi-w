@@ -9,7 +9,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AlunoService {
 
- private baseUrl = 'http://192.168.0.109:8080';
+  private baseUrl = 'http://192.168.0.109:8080';
 
   constructor(private http: HttpClient) { }
 

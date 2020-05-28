@@ -49,9 +49,9 @@ export class AddProfissionaisComponent implements OnInit {
   validaStyleButtonSalvar() {
     if (this.form.valid) {
       return {
-        'background': '#3f51b5',
+        'background': '#ffc906',
         'color': '#fff',
-        'border': '1px solid #3f51b5'
+        'border': '1px solid #ffc906'
       };
     }
   }

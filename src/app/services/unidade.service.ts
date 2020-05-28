@@ -11,7 +11,7 @@ export class UnidadeService {
 
   private serviceUrl = 'http://localhost:3000/unidades';
 
-  private baseUrl = 'http://localhost:8080';
+  private baseUrl = 'http://192.168.0.109:8080';
 
   constructor(private http: HttpClient) { }
 
