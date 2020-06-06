@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Turma } from './../models/turma.models';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -8,9 +9,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TurmaService {
 
-  private baseUrl = 'http://192.168.0.109:8080';
+  /* private baseUrl = 'http://192.168.0.109:8080'; */
 
-  constructor(private http: HttpClient) { }
+  private baseUrl;
+
+  constructor(private http: HttpClient) {
+    this.baseUrl = environment.apiUrl;
+  }
 
   getTurmas(): Observable<Turma[]> {
     return this.http.get<Turma[]>(`${this.baseUrl}/turmas`);

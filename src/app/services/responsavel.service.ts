@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { ResponsavelNewDTO } from './../models/responsavelNewDTO.models';
 import { Responsavel } from './../models/responsavel.models';
 import { Observable } from 'rxjs';
@@ -9,9 +10,13 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ResponsavelService {
 
-  private baseUrl = 'http://192.168.0.109:8080';
+  /* private baseUrl = 'http://192.168.0.109:8080'; */
 
-  constructor(private http: HttpClient) { }
+  private baseUrl;
+
+  constructor(private http: HttpClient) {
+    this.baseUrl = environment.apiUrl;
+  }
 
   getResponsaveis(): Observable<Responsavel[]> {
     return this.http.get<Responsavel[]>(`${this.baseUrl}/responsaveis`);

@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Profissional } from './../models/profissional.models';
 import { Observable } from 'rxjs';
 import { Injectable } from '@angular/core';
@@ -8,9 +9,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class ProfissionalService {
 
-  private baseUrl = 'http://192.168.0.109:8080';
+  /* private baseUrl = 'http://192.168.0.109:8080'; */
+
+  private baseUrl;
 
   constructor(private http: HttpClient) {
+    this.baseUrl = environment.apiUrl;
   }
 
   inserir(profissional: Profissional): Observable<any> {

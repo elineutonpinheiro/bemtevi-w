@@ -1,3 +1,4 @@
+import { environment } from './../../environments/environment.prod';
 import { Lotacao } from '../models/lotacao.models';
 import { Profissional } from '../models/Profissional.models';
 import { Observable } from 'rxjs';
@@ -9,9 +10,12 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LotacaoService {
 
-  private baseUrl = 'http://192.168.0.109:8080';
+  /* private baseUrl = 'http://192.168.0.109:8080'; */
+
+  private baseUrl;
 
   constructor(private http: HttpClient) {
+    this.baseUrl = environment.apiUrl;
   }
 
   inserir(lotacao: Lotacao): Observable<any> {
